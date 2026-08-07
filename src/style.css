@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --primary-button: #3b82f6;
+
+  /* Fonts */
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Dark mode */
+.dark {
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+}
+
+/* Map CSS variables to Tailwind v4 theme utilities */
+@theme {
+  --color-canvas: var(--bg-color);
+  --color-main: var(--text-color);
+  --color-primary: var(--primary-button);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+/* Base resets */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  margin: 0;
+}
