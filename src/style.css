@@ -1,36 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300,400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
+  /* Your Exact Original Colors */
   --bg-color: #f8fafc;
   --text-color: #0f172a;
   --primary-button: #3b82f6;
 
-  /* Fonts */
+  /* Added Light Mode Combinations */
+  --bg-secondary: #ffffff;       /* Pure white for alternating clean sections */
+  --text-muted: #475569;         /* Slate-600 for highly readable paragraph text */
+  --border-subtle: #e2e8f0;      /* Slate-200 for clean section dividers */
+  --primary-hover: #1d4ed8;      /* Darker blue for active hover state */
+
   --font-inter: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Dark mode */
 .dark {
+  /* Your Exact Original Colors */
   --bg-color: #0f172a;
   --text-color: #f8fafc;
+
+  /* Added Dark Mode Combinations */
+  --bg-secondary: #1e293b;       /* Slate-800 for dark mode section containers */
+  --text-muted: #94a3b8;         /* Slate-400 for readable secondary copy */
+  --border-subtle: #334155;      /* Slate-700 for subtle dark dividers */
+  --primary-hover: #60a5fa;      /* Lighter blue for active dark mode hover */
+
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Map CSS variables to Tailwind v4 theme utilities */
 @theme {
   --color-canvas: var(--bg-color);
+  --color-canvas-alt: var(--bg-secondary);
   --color-main: var(--text-color);
+  --color-muted: var(--text-muted);
+  --color-line: var(--border-subtle);
   --color-primary: var(--primary-button);
+  --color-primary-hover: var(--primary-hover);
 
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
 }
 
-/* Base resets */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-mono);
+  font-family: var(--font-inter);
   margin: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Subtle Dotted Background Grid Pattern */
+.bg-dot-pattern {
+  background-color: var(--bg-surface);
+  
+  /* Soft anti-aliased transition from 1px to 1.5px */
+  background-image: radial-gradient(
+    rgba(15, 23, 42, 0.1) 1px, 
+    transparent 1px
+  );
+  
+  /* Fixed tile size across all viewports */
+  background-size: 16px 16px !important;
+  
+  /* Anchor to top-left to avoid responsive shifts */
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
+.dark .bg-dot-pattern {
+  /* Soft anti-aliased transition for dark theme */
+  background-image: radial-gradient(
+    rgba(30, 41, 59) 1px, 
+    transparent 1px
+  );
 }

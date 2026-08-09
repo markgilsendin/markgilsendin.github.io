@@ -1,16 +1,18 @@
 <script setup>
-import ThemeToggle from './components/ThemeToggle.vue'
-import Hero from './components/Hero.vue'
+import Navbar from '@/components/global/Navbar.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="min-h-screen bg-bg text-text-h">
-    <header class="p-4 flex justify-end">
-      <ThemeToggle />
-    </header>
+  <div class="min-h-screen w-full bg-canvas text-main flex flex-col font-sans transition-colors duration-200">
+    <!-- Navbar shows on every single page -->
+    <Navbar />
 
-    <main>
-      <Hero />
+    <!-- RouterView dynamically renders HomeView, ProjectsView, or CaseStudyView -->
+    <main class="grow">
+      <RouterView />
     </main>
+
+    <!-- Optional: Footer can also go here so it stays on all pages -->
   </div>
 </template>
