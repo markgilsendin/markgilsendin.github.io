@@ -1,41 +1,43 @@
 <template>
-  <!-- <header 
-    :class="[
-      'w-full sticky top-0 z-50 transition-all duration-300',
-      isScrolled 
-        ? 'bg-canvas border-b-2 border-main/10' 
-        : 'bg-canvas border-b border-main/10'
-    ]"
-  > -->
   <header class="w-full bg-canvas border-b border-main/10 sticky top-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 h-18
-     flex items-center justify-between">
+    <!-- Updated horizontal padding to match section containers (px-10 sm:px-16 lg:px-24) -->
+    <div class="max-w-7xl mx-auto px-10 sm:px-16 lg:px-24 h-18 flex items-center justify-between">
+      
       <!-- Brand Logo -->
-      <a href="#" class="font-bold text-base sm:text-lg tracking-tight text-main shrink-0">
+      <router-link to="/" class="font-bold text-base sm:text-lg tracking-tight text-main shrink-0 hover:opacity-80 transition-opacity">
         Mark Gil Sendin
-      </a>
+      </router-link>
 
       <!-- Desktop Navigation Links -->
       <nav class="hidden lg:flex items-center gap-6 lg:gap-8">
-        <a 
+        <router-link 
           v-for="link in navLinks" 
           :key="link.name" 
-          :href="link.href" 
+          :to="link.href" 
           class="text-sm font-medium text-main/60 hover:text-main transition-colors"
         >
           {{ link.name }}
-        </a>
+        </router-link>
       </nav>
 
       <!-- Desktop Actions -->
       <div class="hidden lg:flex items-center gap-4">
         <ThemeToggle />
+        
+        <!-- Animated CTA Button -->
         <BaseLink 
-          href="#contact" 
+          href="/#contact" 
           variant="primary" 
           size="sm"
+          class="group"
         >
-          Let's Talk
+          <span>Let's Talk</span>
+          <template #icon-right>
+            <Icon 
+              icon="lucide:arrow-right" 
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" 
+            />
+          </template>
         </BaseLink>
       </div>
 
@@ -71,58 +73,52 @@
   >
     <div 
       v-if="isMobileMenuOpen" 
-      class="lg:hidden sticky top-16 z-40 px-4 sm:px-6 pb-6 pt-2 space-y-4 border-b border-main/10 bg-canvas/95 backdrop-blur-md"
+      class="lg:hidden fixed left-0 right-0 top-[18] z-40 px-10 sm:px-16 pb-6 pt-4 space-y-4 border-b border-main/10 bg-canvas/95 backdrop-blur-md shadow-lg"
     >
-      <nav class="flex flex-col gap-2">
-        <a 
+      <nav class="flex flex-col gap-1">
+        <router-link 
           v-for="link in navLinks" 
           :key="link.name" 
-          :href="link.href" 
+          :to="link.href" 
           @click="isMobileMenuOpen = false"
-          class="text-base font-medium text-main/80 hover:text-main py-2 px-3 rounded-lg hover:bg-main/5 transition-colors"
+          class="text-base font-medium text-main/80 hover:text-main py-2.5 px-3 rounded-lg hover:bg-main/5 transition-colors"
         >
           {{ link.name }}
-        </a>
+        </router-link>
       </nav>
+
       <BaseLink 
-        href="#contact" 
+        href="/#contact" 
         variant="primary" 
         size="md"
-        class="w-full"
+        class="w-full group justify-center"
         @click="isMobileMenuOpen = false"
       >
-        Let's Talk
+        <span>Let's Talk</span>
+        <template #icon-right>
+          <Icon 
+            icon="lucide:arrow-right" 
+            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" 
+          />
+        </template>
       </BaseLink>
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import ThemeToggle from './ThemeToggle.vue'
 import BaseButton from '@/components/global/BaseButton.vue'
 import BaseLink from '@/components/global/BaseLink.vue'
 
 const isMobileMenuOpen = ref(false)
-// const isScrolled = ref(false)
-
-// const handleScroll = () => {
-//   isScrolled.value = window.scrollY > 20
-// }
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Work', href: '#work' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '/#about' },
+  { name: 'Work', href: '/#work' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Contact', href: '/#contact' },
 ]
 </script>

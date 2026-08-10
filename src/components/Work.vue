@@ -29,17 +29,18 @@
           <div class="space-y-4">
             <!-- Top Metadata -->
             <div class="flex items-center justify-between gap-2 font-mono text-xs">
-              <span class="text-primary font-bold tracking-wider uppercase">
-                PROJECT 0{{ index + 1 }}
-              </span>
+              <div class="flex items-center gap-1.5 text-primary font-bold tracking-wider uppercase">
+                <Folder class="w-4 h-4" />
+                <span>PROJECT 0{{ index + 1 }}</span>
+              </div>
               <span class="text-main/40 uppercase tracking-wider text-[11px] truncate">
-                {{ project.caseStudy.type }}
+                {{ project.caseStudy.category }}
               </span>
             </div>
 
             <!-- Title & Description -->
             <div class="space-y-2">
-              <h3 class="text-xl sm:text-2xl font-bold text-main tracking-tight">
+              <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight">
                 {{ project.title }}
               </h3>
               <p class="text-sm text-main/70 leading-relaxed">
@@ -60,18 +61,16 @@
           </div>
 
           <!-- Card Footer -->
-          <div class="pt-4 border-t border-main/10 flex items-center justify-between gap-4 font-mono text-xs">
+          <div class="pt-4 border-t border-main/5 flex items-center justify-between gap-10 font-mono text-xs sm:text-sm">
             <router-link 
               :to="`/projects/${project.id}`"
-              class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary/80 transition-colors group/link"
+              class="inline-flex items-center gap-2 text-primary transition-colors group/link whitespace-nowrap"
             >
               <span>Read Case Study</span>
-              <svg class="w-4 h-4 shrink-0 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <ArrowRight class="w-4 h-4 shrink-0 transition-transform group-hover/link:translate-x-1" />
             </router-link>
 
-            <span class="text-main/40 truncate">
+            <span class="text-main/40 truncate text-right">
               Role: {{ project.caseStudy.role }}
             </span>
           </div>
@@ -82,12 +81,10 @@
       <div class="pt-4 text-center">
         <router-link 
           to="/projects" 
-          class="inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-semibold text-main/80 hover:text-primary border border-main/10 hover:border-primary/40 bg-canvas-alt/50 px-6 py-3 rounded-xl transition-all"
+          class="group/link inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-semibold text-main/80 hover:text-primary border border-main/10 hover:border-primary/40 bg-canvas-alt/50 px-6 py-3 rounded-xl transition-all"
         >
           <span>View All Projects</span>
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+          <ArrowRight class="w-4 h-4 shrink-0 transition-transform group-hover/link:translate-x-1" />
         </router-link>
       </div>
 
@@ -97,7 +94,9 @@
 
 <script setup>
 import { computed } from 'vue'
+import { ArrowRight, Folder } from 'lucide-vue-next'
 import { projects } from '@/data/projects'
+
 
 // Display projects in 2-column grid
 const featuredProjects = computed(() => projects.slice(0, 4))

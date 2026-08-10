@@ -3,7 +3,6 @@
     id="about" 
     class="bg-canvas-alt w-full relative overflow-hidden"
   >
-
     <div class="relative max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-6 sm:space-y-8">
       
       <!-- Section Tag -->
@@ -23,39 +22,46 @@
         I'm a Frontend Developer with experience building and maintaining web applications for real-world business and institutional needs. My work involves developing responsive interfaces, integrating REST APIs, implementing application functionality, troubleshooting system issues, and improving existing applications.
       </p>
 
+      <div class="pt-8 space-y-2">
+        <h3 class="text-xl sm:text-2xl font-bold text-main tracking-tight">
+          What I can help build
+        </h3>
+      </div>
+
       <!-- Key Highlight Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-10 border-t border-main/10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
         
-        <div class="text-xs md:text-sm bg-canvas/40 border border-main/10 p-5 rounded-xl space-y-2">
-          <div class="font-mono text-primary font-semibold">01 / UI DESIGN</div>
-          <h3 class="font-bold text-main">Responsive Interfaces</h3>
-          <p class="text-main/60 leading-normal">
-            Building accessible and fluid interfaces across all screen sizes.
-          </p>
-        </div>
+        <div 
+          v-for="feature in features" 
+          :key="feature.id"
+          class="bg-canvas/40 border border-main/10 p-6 rounded-xl space-y-4 hover:border-main/20 transition-all flex flex-col justify-between"
+        >
+          <div class="space-y-3">
+            <!-- Top Header: Icon + Number Code -->
+            <div class="flex items-center justify-between">
+              <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <component :is="feature.icon" class="w-4 h-4" />
+              </div>
+              <span class="font-mono text-xs font-bold text-primary">
+                {{ feature.code }}
+              </span>
+            </div>
 
-        <div class="text-xs md:text-sm bg-canvas/40 border border-main/10 p-5 rounded-xl space-y-2">
-          <div class="font-mono text-primary font-semibold">02 / DATA FLOW</div>
-          <h3 class="font-bold text-main">REST API Integration</h3>
-          <p class="text-main/60 leading-normal">
-            Connecting backend services seamlessly with frontend state management.
-          </p>
-        </div>
+            <!-- Category & Title Group -->
+            <div class="space-y-1 pt-1">
+              <p class="font-mono text-[11px] text-main/40 uppercase tracking-wider font-medium">
+                {{ feature.category }}
+              </p>
+              <h3 class="text-sm md:text-base font-bold text-main tracking-tight">
+                {{ feature.title }}
+              </h3>
+            </div>
 
-        <div class="text-xs md:text-sm bg-canvas/40 border border-main/10 p-5 rounded-xl space-y-2">
-          <div class="font-mono text-primary font-semibold">03 / ARCHITECTURE</div>
-          <h3 class="font-bold text-main">Application Logic</h3>
-          <p class="text-main/60 leading-normal">
-            Implementing client-side workflows, forms, and user journeys.
-          </p>
-        </div>
-
-        <div class="text-xs md:text-sm bg-canvas/40 border border-main/10 p-5 rounded-xl space-y-2">
-          <div class="font-mono text-primary font-semibold">04 / MAINTENANCE</div>
-          <h3 class="font-bold text-main">System Improvement</h3>
-          <p class="text-main/60 leading-normal">
-            Troubleshooting system issues and upgrading existing codebases.
-          </p>
+            <!-- Description -->
+            <p class="text-xs md:text-sm text-main/60 leading-relaxed">
+              {{ feature.description }}
+            </p>
+          </div>
         </div>
 
       </div>
@@ -65,4 +71,40 @@
 </template>
 
 <script setup>
+import { Monitor, Network, Cpu, Wrench } from 'lucide-vue-next'
+
+const features = [
+  {
+    id: 'ui-design',
+    code: '01',
+    category: 'UI DESIGN',
+    title: 'Responsive Interfaces',
+    description: 'Building accessible and fluid interfaces across all screen sizes.',
+    icon: Monitor
+  },
+  {
+    id: 'data-flow',
+    code: '02',
+    category: 'DATA FLOW',
+    title: 'REST API Integration',
+    description: 'Connecting frontend applications with REST APIs.',
+    icon: Network
+  },
+  {
+    id: 'architecture',
+    code: '03',
+    category: 'ARCHITECTURE',
+    title: 'Web Applications',
+    description: 'Dashboards, management systems, forms, and data-driven applications.',
+    icon: Cpu
+  },
+  {
+    id: 'maintenance',
+    code: '04',
+    category: 'MAINTENANCE',
+    title: 'System Improvement',
+    description: 'Troubleshooting system issues and upgrading existing codebases.',
+    icon: Wrench
+  }
+]
 </script>

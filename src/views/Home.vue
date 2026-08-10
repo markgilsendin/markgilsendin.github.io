@@ -2,7 +2,9 @@
 import Hero from '@/components/Hero.vue'
 import About from '@/components/About.vue'
 import Work from '@/components/Work.vue'
-// You can also import future sections here like Skills, Experience, Contact!
+import TechStack from '@/components/TechStack.vue'
+import Contact from '@/components/Contact.vue'
+
 </script>
 
 <template>
@@ -10,5 +12,7 @@ import Work from '@/components/Work.vue'
     <Hero />
     <About />
     <Work />
+    <TechStack />
+    <Contact />
   </div>
 </template>

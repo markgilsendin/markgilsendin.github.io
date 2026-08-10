@@ -9,11 +9,11 @@
       >
         &larr; Back to Home
       </router-link>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-main tracking-tight">
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
         All Projects
       </h1>
-      <p class="text-base sm:text-lg text-main/70">
-        A complete portfolio of web applications, enterprise systems, and custom digital platforms I've engineered.
+      <p class="text-xs sm:text-sm md:text-base text-main/70">
+         A complete portfolio of web applications, platforms, and frontend projects showcasing responsive interfaces, API integrations, and practical software solutions.
       </p>
     </div>
 
@@ -46,52 +46,62 @@
     </div>
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-      <div 
-        v-for="project in filteredProjects" 
-        :key="project.id"
-        class="bg-canvas border border-main/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-main/20 transition-all shadow-xs space-y-6"
-      >
-        <div class="space-y-4">
-          <div class="flex items-center justify-between text-xs font-mono">
-            <span class="text-primary font-semibold uppercase">{{ project.caseStudy.role }}</span>
-            <span class="text-main/40">{{ project.caseStudy.timeline }}</span>
+    <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
+        <article 
+          v-for="(project, index) in filteredProjects" 
+          :key="project.id"
+          class="group relative bg-canvas-alt/50 border border-main/10 rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-main/20 transition-all duration-300"
+        >
+          <div class="space-y-4">
+            <!-- Top Metadata -->
+            <div class="flex items-center justify-between gap-2 font-mono text-xs">
+              <div class="flex items-center gap-1.5 text-primary font-bold tracking-wider uppercase">
+                <Folder class="w-4 h-4" />
+                <span>PROJECT 0{{ index + 1 }}</span>
+              </div>
+              <span class="text-main/40 uppercase tracking-wider text-[11px] truncate">
+                {{ project.caseStudy.category }}
+              </span>
+            </div>
+
+            <!-- Title & Description -->
+            <div class="space-y-2">
+              <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight">
+                {{ project.title }}
+              </h3>
+              <p class="text-sm text-main/70 leading-relaxed">
+                {{ project.shortDescription }}
+              </p>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span 
+                v-for="tech in project.tags" 
+                :key="tech"
+                class="font-mono text-xs text-main/80 bg-main/5 border border-main/10 px-2.5 py-1 rounded"
+              >
+                {{ tech }}
+              </span>
+            </div>
           </div>
 
-          <h2 class="text-xl font-bold text-main leading-snug">
-            {{ project.title }}
-          </h2>
-
-          <p class="text-sm text-main/60 leading-relaxed">
-            {{ project.shortDescription }}
-          </p>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-1.5 pt-2">
-            <span 
-              v-for="tag in project.tags" 
-              :key="tag"
-              class="font-mono text-[11px] text-main/70 bg-main/5 px-2.5 py-1 rounded"
+          <!-- Card Footer -->
+          <div class="pt-4 border-t border-main/5 flex items-center justify-between gap-10 font-mono text-xs sm:text-sm">
+            <router-link 
+              :to="`/projects/${project.id}`"
+              class="inline-flex items-center gap-2 text-primary transition-colors group/link whitespace-nowrap"
             >
-              {{ tag }}
+              <span>Read Case Study</span>
+              <ArrowRight class="w-4 h-4 shrink-0 transition-transform group-hover/link:translate-x-1" />
+            </router-link>
+
+            <span class="text-main/40 truncate text-right">
+              Role: {{ project.caseStudy.role }}
             </span>
           </div>
-        </div>
-
-        <!-- Case Study Link -->
-        <div class="pt-4 border-t border-main/10">
-          <router-link 
-            :to="`/projects/${project.id}`"
-            class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary hover:underline"
-          >
-            <span>Read Full Case Study</span>
-            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </router-link>
-        </div>
+        </article>
       </div>
-    </div>
 
   </div>
 </template>
@@ -99,6 +109,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { projects } from '@/data/projects'
+import { ArrowRight, Folder } from 'lucide-vue-next'
 
 const selectedTag = ref('All')
 
