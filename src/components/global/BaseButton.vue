@@ -1,4 +1,3 @@
-<!-- src/components/BaseButton.vue -->
 <template>
   <button
     :type="type"

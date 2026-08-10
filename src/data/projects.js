@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: 'attendance-monitoring-system',
-    title: '01 — High School Attendance Monitoring with Parent Notification',
+    title: 'High School Attendance Monitoring with Parent Notification',
     shortDescription: 'A school attendance application that allows students to record their time-in and time-out using their student number and fingerprint. The attendance is recorded in the system, while parents receive notifications when their child arrives at or leaves the school.',
     tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Firebase', 'Laravel', 'Android WebView'],
     liveUrl: '#',
@@ -9,7 +9,8 @@ export const projects = [
 
     caseStudy: {
       role: 'Frontend Developer',
-      type: 'Confidential Institutional Project',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Web App',
       overview: 'A school attendance application that allows students to record their time-in and time-out using their student number and fingerprint. The attendance is recorded in the system, while parents receive notifications when their child arrives at or leaves the school.',
       challenge: 'The application needed to provide a simple and straightforward interface for students while connecting the attendance process with the backend system and notification service. The application was also intended to run through an Android WebView, so the frontend needed to work properly within a mobile environment.',
       myContribution: [
@@ -28,7 +29,7 @@ export const projects = [
   },
   {
     id: 'data-management-system',
-    title: '02 — Data Management System',
+    title: 'Data Management System',
     shortDescription: 'A university data management and document repository system used by faculty and employees to submit, manage, and retrieve requested files.',
     tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Laravel'],
     liveUrl: '#',
@@ -36,7 +37,8 @@ export const projects = [
 
     caseStudy: {
       role: 'Frontend Developer',
-      type: 'Confidential Institutional Project',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Platform',
       overview: 'A university data management and document repository system used by faculty and employees to submit, manage, and retrieve requested files. Administrators can create events and assign participating colleges and offices. Assigned offices can then submit the required documents and files associated with each event.',
       challenge: 'The system needed to support different document submission workflows depending on the event and the assigned office or college. Users needed a clear way to view their assigned requirements, submit files, and manage their documents, while administrators needed to monitor submissions across different events.',
       myContribution: [
@@ -55,7 +57,7 @@ export const projects = [
   },
   {
     id: 'service-request-management-system',
-    title: '03 — Service Request Management System',
+    title: 'Service Request Management System',
     shortDescription: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices.',
     tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Laravel'],
     liveUrl: '#',
@@ -63,7 +65,8 @@ export const projects = [
 
     caseStudy: {
       role: 'Frontend Developer',
-      type: 'Confidential Institutional Project',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Platform',
       overview: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices. Requestors can submit service requests and monitor their status. GSO personnel can review requests, conduct inspections, provide recommendations, assign workers, and process requests until completion. Requestors can also provide feedback after the service has been completed.',
       challenge: 'The service request process involves several stages and different users. The system needed to clearly communicate the current status of each request and provide the appropriate information and actions at each stage.',
       myContribution: [
@@ -84,7 +87,7 @@ export const projects = [
   },
   {
     id: 'kpi-management-system',
-    title: '04 — University Key Performance Indicator Management System',
+    title: 'University Key Performance Indicator Management System',
     shortDescription: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year.',
     tags: ['React', 'Tailwind CSS', 'Laravel'],
     liveUrl: '#',
@@ -92,7 +95,8 @@ export const projects = [
 
     caseStudy: {
       role: 'Frontend Developer',
-      type: 'Confidential Institutional Project',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Platform',
       overview: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year. Offices can submit their quarterly targets and accomplishments, while executives can monitor performance through dashboards and review previous office performance by selecting different years.',
       challenge: 'The system needed to present performance data in a way that was easy to understand while allowing users to review detailed quarterly information and historical performance.',
       myContribution: [
@@ -111,7 +115,7 @@ export const projects = [
   },
   {
     id: 'gateway-rural-bank-website',
-    title: '05 — Bank Informational Website',
+    title: 'Bank Informational Website',
     shortDescription: 'A corporate informational website developed for a Philippine bank to provide visitors with information about its services, products, announcements, and other relevant content.',
     tags: ['WordPress', 'Elementor', 'Figma', 'Hostinger'],
     liveUrl: 'https://gatebank.com.ph',
@@ -119,7 +123,8 @@ export const projects = [
 
     caseStudy: {
       role: 'Web Developer — Design, Development & Deployment',
-      type: 'Public Project',
+      category: 'Public Project',
+      type: 'Public Corporate Website',
       overview: 'A corporate informational website developed for a Philippine bank to provide visitors with information about its services, products, announcements, and other relevant content. Unlike my institutional projects, I handled this project from the initial design through development and deployment.',
       challenge: 'The website needed to present a large amount of information while maintaining a clear navigation structure and responsive experience across desktop and mobile devices. The design also needed to maintain a professional appearance appropriate for a financial institution.',
       myContribution: [

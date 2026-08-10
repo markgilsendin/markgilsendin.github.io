@@ -1,4 +1,3 @@
-<!-- src/components/BaseLink.vue -->
 <template>
   <a
     :href="href"

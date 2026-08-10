@@ -1,20 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
-import Projects from '@/views/Projects.vue'
-import ProjectCaseStudy from '@/views/ProjectCaseStudy.vue'
-
-const routes = [
-  { path: '/', name: 'Home', component: Home },
-  { path: '/projects', name: 'Projects', component: Projects },
-  { path: '/projects/:id', name: 'CaseStudy', component: ProjectCaseStudy, props: true },
-]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-  // Always scroll to top when navigating to a new page
-  scrollBehavior() {
-    return { top: 0 }
+  routes: [
+    { path: '/', name: 'home', component: Home },
+    { path: '/projects', name: 'projects', component: () => import('@/views/Projects.vue') },
+    { path: '/projects/:id', name: 'case-study', component: () => import('@/views/ProjectCaseStudy.vue') }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+    // Always scroll to top when changing routes
+    return savedPosition || { top: 0 }
   }
 })
 
