@@ -1,23 +1,48 @@
 <template>
-  <header class="w-full bg-canvas border-b border-main/10 sticky top-0 z-50 transition-all duration-300">
-    <!-- Updated horizontal padding to match section containers (px-10 sm:px-16 lg:px-24) -->
+  <header class="w-full bg-canvas/80 backdrop-blur-md border-b border-main/10 sticky top-0 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-10 sm:px-16 lg:px-24 h-18 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <router-link to="/" class="font-bold text-base sm:text-lg tracking-tight text-main shrink-0 hover:opacity-80 transition-opacity">
-        Mark Gil Sendin
+     <router-link to="/" class="flex items-center gap-3 group shrink-0">
+        <!-- Avatar Container with Online Status Dot -->
+        <div class="relative">
+          <div class="w-12 h-12 bg-white rounded-full overflow-hidden border-2 border-primary/80 group-hover:border-primary transition-all duration-300 group-hover:shadow-primary/20">
+            <img 
+              src="/profile.png" 
+              alt="Mark Gil Sendin" 
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <!-- Active Status Indicator -->
+          <span 
+            class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-canvas rounded-full" 
+            title="Open to opportunities"
+          ></span>
+        </div>
+
+        <!-- Name -->
+        <span class="font-bold text-base tracking-tight text-main/80 hover:text-main">
+          Mark Gil Sendin
+        </span>
       </router-link>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-6 lg:gap-8">
-        <router-link 
+      <nav class="hidden lg:flex items-center gap-8">
+        <a 
           v-for="link in navLinks" 
           :key="link.name" 
-          :to="link.href" 
-          class="text-sm font-medium text-main/60 hover:text-main transition-colors"
+          :href="link.href"
+          @click="scrollToSection($event, link.href)"
+          class="relative text-sm font-semibold tracking-wide py-1 text-main/70 hover:text-main transition-colors duration-200 group"
+          :class="activeSection === link.href.replace('/#', '') ? 'text-primary' : 'text-main/70 hover:text-main'"
         >
           {{ link.name }}
-        </router-link>
+          <!-- Animated Underline -->
+          <span 
+            class="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 rounded-full"
+            :class="activeSection === link.href.replace('/#', '') ? 'w-full' : 'w-0 group-hover:w-full'"
+          ></span>
+        </a>
       </nav>
 
       <!-- Desktop Actions -->
@@ -29,13 +54,14 @@
           href="/#contact" 
           variant="primary" 
           size="sm"
-          class="group"
+          class="group shadow-sm hover:shadow-primary/25 transition-shadow"
+          @click="scrollToSection($event, '/#contact')"
         >
           <span>Let's Talk</span>
           <template #icon-right>
             <Icon 
               icon="lucide:arrow-right" 
-              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" 
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" 
             />
           </template>
         </BaseLink>
@@ -47,7 +73,7 @@
         <BaseButton 
           variant="ghost" 
           size="sm"
-          class="p-2"
+          class="p-2 text-main"
           aria-label="Toggle Navigation Menu"
           @click="isMobileMenuOpen = !isMobileMenuOpen" 
         >
@@ -73,32 +99,34 @@
   >
     <div 
       v-if="isMobileMenuOpen" 
-      class="lg:hidden fixed left-0 right-0 top-[18] z-40 px-10 sm:px-16 pb-6 pt-4 space-y-4 border-b border-main/10 bg-canvas/95 backdrop-blur-md shadow-lg"
+      class="lg:hidden fixed left-0 right-0 top-18 z-40 px-10 sm:px-16 pb-6 pt-4 space-y-4 border-b border-main/10 bg-canvas/95 backdrop-blur-xl shadow-xl"
     >
       <nav class="flex flex-col gap-1">
-        <router-link 
+        <a 
           v-for="link in navLinks" 
           :key="link.name" 
-          :to="link.href" 
-          @click="isMobileMenuOpen = false"
-          class="text-base font-medium text-main/80 hover:text-main py-2.5 px-3 rounded-lg hover:bg-main/5 transition-colors"
+          :href="link.href" 
+          @click="scrollToSection($event, link.href); isMobileMenuOpen = false"
+          class="text-sm font-semibold uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-200 flex items-center justify-between"
+          :class="activeSection === link.href.replace('/#', '') ? 'text-primary bg-primary/10' : 'text-main/80 hover:text-main hover:bg-main/5'"
         >
-          {{ link.name }}
-        </router-link>
+          <span>{{ link.name }}</span>
+          <span v-if="activeSection === link.href.replace('/#', '')" class="w-2 h-2 rounded-full bg-primary"></span>
+        </a>
       </nav>
 
       <BaseLink 
         href="/#contact" 
         variant="primary" 
         size="md"
-        class="w-full group justify-center"
-        @click="isMobileMenuOpen = false"
+        class="w-full group justify-center shadow-md"
+        @click="scrollToSection($event, '/#contact'); isMobileMenuOpen = false"
       >
         <span>Let's Talk</span>
         <template #icon-right>
           <Icon 
             icon="lucide:arrow-right" 
-            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" 
+            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" 
           />
         </template>
       </BaseLink>
@@ -107,18 +135,65 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import ThemeToggle from './ThemeToggle.vue'
 import BaseButton from '@/components/global/BaseButton.vue'
 import BaseLink from '@/components/global/BaseLink.vue'
 
 const isMobileMenuOpen = ref(false)
+const activeSection = ref('')
 
 const navLinks = [
   { name: 'About', href: '/#about' },
   { name: 'Work', href: '/#work' },
   { name: 'Skills', href: '/#skills' },
-  { name: 'Contact', href: '/#contact' },
 ]
+
+// Smooth Scroll Handler
+const scrollToSection = (e, href) => {
+  const targetId = href.replace('/#', '')
+  const el = document.getElementById(targetId)
+  if (el) {
+    e.preventDefault()
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+// Scrollspy Logic based on element screen position
+const handleScrollSpy = () => {
+  const scrollPosition = window.scrollY
+  
+  // 1. Reset if near the top (Hero area)
+  if (scrollPosition < 200) {
+    activeSection.value = ''
+    return
+  }
+
+  const sections = ['about', 'work', 'skills', 'contact']
+  const navOffset = 120 // Header offset buffer
+
+  for (const id of sections) {
+    const el = document.getElementById(id)
+    if (el) {
+      const top = el.offsetTop - navOffset
+      const height = el.offsetHeight
+
+      // Check if current scroll position falls inside this section
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        activeSection.value = id
+        break
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScrollSpy, { passive: true })
+  handleScrollSpy() // Run once on mount to set initial state
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScrollSpy)
+})
 </script>

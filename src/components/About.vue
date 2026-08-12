@@ -34,7 +34,8 @@
         <div 
           v-for="feature in features" 
           :key="feature.id"
-          class="bg-canvas/40 border border-main/10 p-6 rounded-xl space-y-4 hover:border-main/20 transition-all flex flex-col justify-between"
+          class="bg-canvas/40 p-6 rounded-xl space-y-4 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]
+                 transition-all flex flex-col justify-between"
         >
           <div class="space-y-3">
             <!-- Top Header: Icon + Number Code -->

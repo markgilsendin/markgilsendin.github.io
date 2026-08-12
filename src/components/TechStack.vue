@@ -31,7 +31,7 @@
           class="space-y-6"
         >
           <!-- Category Subheading -->
-          <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight border-b border-main/10 pb-3">
+          <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight pb-3">
             {{ category.title }}
           </h3>
 
@@ -40,7 +40,7 @@
             <div
               v-for="tool in category.tools"
               :key="tool.name"
-              class="group flex flex-col items-center justify-center p-5 rounded-xl bg-canvas-alt border border-main/10 hover:border-main/20 hover:-translate-y-0.5 transition-all duration-200 cursor-default"
+              class="bg-canvas/40 group flex flex-col items-center justify-center p-5 rounded-xl shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-200 cursor-default"
             >
               <!-- Iconify Logo -->
               <Icon 

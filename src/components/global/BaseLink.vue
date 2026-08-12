@@ -1,7 +1,7 @@
 <template>
   <a
     :href="href"
-    :download="download"
+    :download="download || undefined"
     :target="target"
     :rel="computedRel"
     :class="getButtonClass(variant, size)"
@@ -47,7 +47,7 @@ const props = defineProps({
 
 const { getButtonClass } = useButtonStyles()
 
-// Automatically apply security best practices for external links
+// Automatically apply security
 const computedRel = computed(() => {
   if (props.rel) return props.rel
   return props.target === '_blank' ? 'noopener noreferrer' : undefined

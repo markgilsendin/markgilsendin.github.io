@@ -24,7 +24,7 @@
         <article 
           v-for="(project, index) in featuredProjects" 
           :key="project.id"
-          class="group relative bg-canvas-alt/50 border border-main/10 rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-main/20 transition-all duration-300"
+          class="group relative bg-canvas-alt/70 rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:border-main/20 transition-all duration-300"
         >
           <div class="space-y-4">
             <!-- Top Metadata -->

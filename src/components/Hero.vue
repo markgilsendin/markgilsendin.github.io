@@ -43,8 +43,9 @@
 
             <!-- Download CV -->
             <BaseLink 
-              href="/cv.pdf" 
-              download 
+              href="/Mark Gil Sendin - CV.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
               variant="outline" 
               size="md"
             >
@@ -64,7 +65,7 @@
           <div class="w-full max-w-md rounded-2xl border border-main/10 bg-canvas/80 backdrop-blur-md shadow-xl shadow-main/5 overflow-hidden font-mono text-xs sm:text-sm">
             
             <!-- Window Bar -->
-            <div class="px-4 py-3 border-b border-main/10 bg-main/[0.02] flex items-center justify-between">
+            <div class="px-4 py-3 border-b border-main/10 bg-main/2 flex items-center justify-between">
               <div class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-rose-400/80 inline-block"></span>
                 <span class="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
@@ -89,7 +90,7 @@
             </div>
 
             <!-- Status Footer -->
-            <div class="px-5 py-3 border-t border-main/10 bg-main/[0.02] flex items-center gap-2.5">
+            <div class="px-5 py-3 border-t border-main/10 bg-main/2 flex items-center gap-2.5">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
