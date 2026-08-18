@@ -18,7 +18,7 @@
             Skills & Tools
           </h2>
           <p class="text-xs sm:text-sm md:text-base text-main/70 font-normal">
-            Technologies and frameworks I use to build, integrate, and maintain web applications.
+            Technologies and tools I use to build, integrate, and maintain web applications.
           </p>
         </div>
       </div>
@@ -77,7 +77,7 @@ import { Icon } from '@iconify/vue'
 
 const techCategories = ref([
   {
-    title: 'Technical Skills',
+    title: 'Frontend',
     tools: [
       { name: 'React', icon: 'logos:react' },
       { name: 'Next.js', icon: 'logos:nextjs-icon' },
@@ -86,22 +86,25 @@ const techCategories = ref([
       { name: 'TypeScript', icon: 'logos:typescript-icon' },
       { name: 'HTML', icon: 'logos:html-5' },
       { name: 'CSS', icon: 'logos:css-3' },
-      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
-      { name: 'Responsive Design', icon: 'lucide:layout' },
-      { name: 'Component-Based UI', icon: 'lucide:layers' },
+      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' }
+    ]
+  },
+  {
+   title: 'Backend / Integration',
+    tools: [
       { name: 'Laravel', subtitle: 'API Integration', icon: 'logos:laravel' },
       { name: 'Django', subtitle: 'API Integration', icon: 'logos:django-icon' },
       { name: 'REST APIs', icon: 'lucide:workflow' }
     ]
   },
   {
-    title: 'Tools & Platforms',
+    title: 'Tools',
     tools: [
+      { name: 'VS Code', icon: 'logos:visual-studio-code' },
+      { name: 'Figma', icon: 'logos:figma' },
       { name: 'Git', icon: 'logos:git-icon' },
       { name: 'GitHub', icon: 'lucide:github' },
-      { name: 'VS Code', icon: 'logos:visual-studio-code' },
       { name: 'Postman', icon: 'logos:postman-icon' },
-      { name: 'Figma', icon: 'logos:figma' }
     ]
   }
 ])

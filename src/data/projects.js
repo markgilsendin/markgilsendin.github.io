@@ -3,7 +3,7 @@ export const projects = [
     id: 'attendance-monitoring-system',
     title: 'High School Attendance Monitoring with Parent Notification',
     shortDescription: 'A school attendance application that allows students to record their time-in and time-out using their student number and fingerprint. The attendance is recorded in the system, while parents receive notifications when their child arrives at or leaves the school.',
-    tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Firebase', 'Laravel', 'Android WebView'],
+    tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Firebase', 'Android WebView'],
     liveUrl: '#',
     githubUrl: null,
 
@@ -31,7 +31,7 @@ export const projects = [
     id: 'data-management-system',
     title: 'Data Management System',
     shortDescription: 'A university data management and document repository system used by faculty and employees to submit, manage, and retrieve requested files.',
-    tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Laravel'],
+    tags: ['Vue.js', 'Vuex', 'Tailwind CSS'],
     liveUrl: '#',
     githubUrl: null,
 
@@ -53,64 +53,6 @@ export const projects = [
       technicalChallenges: 'One of the main challenges was presenting different requirements and submission statuses based on the user\'s assigned event. The frontend needed to clearly communicate what documents were required and the current status of each submission while keeping the process simple for users.',
       whatILearned: 'This project strengthened my experience in building data-driven applications with different user workflows. It also gave me more experience working with file-related functionality and API-driven data management.',
       outcome: 'The system provided a centralized platform for managing university document requests, event requirements, and file submissions.'
-    }
-  },
-  {
-    id: 'service-request-management-system',
-    title: 'Service Request Management System',
-    shortDescription: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices.',
-    tags: ['Vue.js', 'Vuex', 'Tailwind CSS', 'Laravel'],
-    liveUrl: '#',
-    githubUrl: null,
-
-    caseStudy: {
-      role: 'Frontend Developer',
-      category: 'Confidential Institutional Project',
-      type: 'Institutional Platform',
-      overview: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices. Requestors can submit service requests and monitor their status. GSO personnel can review requests, conduct inspections, provide recommendations, assign workers, and process requests until completion. Requestors can also provide feedback after the service has been completed.',
-      challenge: 'The service request process involves several stages and different users. The system needed to clearly communicate the current status of each request and provide the appropriate information and actions at each stage.',
-      myContribution: [
-        'Translating Figma designs into functional interfaces',
-        'Developing service request forms and pages',
-        'Integrating Laravel APIs',
-        'Managing application state using Vuex',
-        'Building request status and tracking interfaces',
-        'Developing inspection and recommendation interfaces',
-        'Implementing worker assignment interfaces',
-        'Developing feedback functionality',
-        'Building responsive layouts using Tailwind CSS'
-      ],
-      technicalChallenges: 'The main challenge was representing the different stages of the service request process in the frontend. A request can move from submission to inspection, recommendation, worker assignment, completion, and feedback. The interface needed to clearly display the current stage and relevant information throughout the process.',
-      whatILearned: 'This project improved my understanding of workflow-based applications and how frontend interfaces can represent processes involving multiple users and stages.',
-      outcome: 'The system provided university offices and GSO personnel with a centralized way to submit, process, track, and monitor service requests.'
-    }
-  },
-  {
-    id: 'kpi-management-system',
-    title: 'University Key Performance Indicator Management System',
-    shortDescription: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year.',
-    tags: ['React', 'Tailwind CSS', 'Laravel'],
-    liveUrl: '#',
-    githubUrl: null,
-
-    caseStudy: {
-      role: 'Frontend Developer',
-      category: 'Confidential Institutional Project',
-      type: 'Institutional Platform',
-      overview: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year. Offices can submit their quarterly targets and accomplishments, while executives can monitor performance through dashboards and review previous office performance by selecting different years.',
-      challenge: 'The system needed to present performance data in a way that was easy to understand while allowing users to review detailed quarterly information and historical performance.',
-      myContribution: [
-        'Translating Figma designs into functional React interfaces',
-        'Developing dashboard components',
-        'Integrating Laravel APIs',
-        'Developing interfaces for quarterly targets and accomplishments',
-        'Implementing year-based filtering',
-        'Managing frontend application states',
-        'Building responsive layouts using Tailwind CSS'
-      ],
-      technicalChallenges: 'One of the main challenges was presenting performance data clearly while handling different reporting periods and years. The dashboard needed to update its information based on the selected year and provide users with a clear view of office performance.',
-      whatILearned: 'This project gave me more experience working with React and dashboard-based applications where data needs to be presented clearly across different reporting periods.',
-      outcome: 'The system provided a centralized platform for monitoring university performance indicators, quarterly accomplishments, and historical office performance.'
     }
   },
   {
@@ -140,5 +82,64 @@ export const projects = [
       whatILearned: 'This project gave me experience beyond application frontend development. I was able to work through the complete website process, from visual design and development to testing and deployment.',
       outcome: 'The completed website provides the bank with a public-facing platform for presenting its services and information to customers.'
     }
-  }
+  },
+  {
+    id: 'kpi-management-system',
+    title: 'University Key Performance Indicator Management System',
+    shortDescription: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year.',
+    tags: ['React', 'Tailwind CSS'],
+    liveUrl: '#',
+    githubUrl: null,
+
+    caseStudy: {
+      role: 'Frontend Developer',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Platform',
+      overview: 'A university performance monitoring system designed to track office-level Key Performance Indicators (KPIs) throughout the year. Offices can submit their quarterly targets and accomplishments, while executives can monitor performance through dashboards and review previous office performance by selecting different years.',
+      challenge: 'The system needed to present performance data in a way that was easy to understand while allowing users to review detailed quarterly information and historical performance.',
+      myContribution: [
+        'Translating Figma designs into functional React interfaces',
+        'Developing dashboard components',
+        'Integrating Laravel APIs',
+        'Developing interfaces for quarterly targets and accomplishments',
+        'Implementing year-based filtering',
+        'Managing frontend application states',
+        'Building responsive layouts using Tailwind CSS'
+      ],
+      technicalChallenges: 'One of the main challenges was presenting performance data clearly while handling different reporting periods and years. The dashboard needed to update its information based on the selected year and provide users with a clear view of office performance.',
+      whatILearned: 'This project gave me more experience working with React and dashboard-based applications where data needs to be presented clearly across different reporting periods.',
+      outcome: 'The system provided a centralized platform for monitoring university performance indicators, quarterly accomplishments, and historical office performance.'
+    }
+  },
+  {
+    id: 'service-request-management-system',
+    title: 'Service Request Management System',
+    shortDescription: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices.',
+    tags: ['Vue.js', 'Vuex', 'Tailwind CSS'],
+    liveUrl: '#',
+    githubUrl: null,
+
+    caseStudy: {
+      role: 'Frontend Developer',
+      category: 'Confidential Institutional Project',
+      type: 'Institutional Platform',
+      overview: 'A service request management system developed for the university\'s General Services Office (GSO) to handle repair and service requests from different university offices. Requestors can submit service requests and monitor their status. GSO personnel can review requests, conduct inspections, provide recommendations, assign workers, and process requests until completion. Requestors can also provide feedback after the service has been completed.',
+      challenge: 'The service request process involves several stages and different users. The system needed to clearly communicate the current status of each request and provide the appropriate information and actions at each stage.',
+      myContribution: [
+        'Translating Figma designs into functional interfaces',
+        'Developing service request forms and pages',
+        'Integrating Laravel APIs',
+        'Managing application state using Vuex',
+        'Building request status and tracking interfaces',
+        'Developing inspection and recommendation interfaces',
+        'Implementing worker assignment interfaces',
+        'Developing feedback functionality',
+        'Building responsive layouts using Tailwind CSS'
+      ],
+      technicalChallenges: 'The main challenge was representing the different stages of the service request process in the frontend. A request can move from submission to inspection, recommendation, worker assignment, completion, and feedback. The interface needed to clearly display the current stage and relevant information throughout the process.',
+      whatILearned: 'This project improved my understanding of workflow-based applications and how frontend interfaces can represent processes involving multiple users and stages.',
+      outcome: 'The system provided university offices and GSO personnel with a centralized way to submit, process, track, and monitor service requests.'
+    }
+  },
+  
 ]

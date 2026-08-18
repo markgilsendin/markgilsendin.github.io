@@ -13,13 +13,14 @@
       <!-- Main Heading -->
       <div class="max-w-3xl">
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
-          A frontend developer focused on building useful software.
+          A frontend developer focused on building practical web applications.
         </h2>
       </div>
 
       <!-- Description -->
       <p class="text-xs sm:text-sm md:text-base text-main/70 font-normal">
-        I'm a Frontend Developer with experience building and maintaining web applications for real-world business and institutional needs. My work involves developing responsive interfaces, integrating REST APIs, implementing application functionality, troubleshooting system issues, and improving existing applications.
+        I work primarily on the frontend of web applications, turning designs into functional interfaces and connecting them with backend services. 
+        My experience includes institutional systems, dashboards, workflow-based applications, and business websites.
       </p>
 
       <div class="pt-8 space-y-2">
@@ -29,12 +30,12 @@
       </div>
 
       <!-- Key Highlight Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-4">
         
         <div 
           v-for="feature in features" 
           :key="feature.id"
-          class="bg-canvas/40 p-6 rounded-xl space-y-4 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]
+          class="bg-canvas/40 p-6 rounded-xl space-y-4 border border-main/10 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]
                  transition-all flex flex-col justify-between"
         >
           <div class="space-y-3">
@@ -78,33 +79,33 @@ const features = [
   {
     id: 'ui-design',
     code: '01',
-    category: 'UI DESIGN',
+    category: 'UI Development',
     title: 'Responsive Interfaces',
-    description: 'Building accessible and fluid interfaces across all screen sizes.',
+    description: 'Translating designs into clean, responsive interfaces across desktop and mobile.',
     icon: Monitor
   },
   {
     id: 'data-flow',
     code: '02',
-    category: 'DATA FLOW',
+    category: 'API INTEGRATION',
     title: 'REST API Integration',
-    description: 'Connecting frontend applications with REST APIs.',
+    description: 'Connecting frontend applications to backend services and handling application data and states.',
     icon: Network
   },
   {
     id: 'architecture',
     code: '03',
-    category: 'ARCHITECTURE',
+    category: 'APPLICATION DEVELOPMENT',
     title: 'Web Applications',
-    description: 'Dashboards, management systems, forms, and data-driven applications.',
+    description: 'Building dashboards, management systems, forms, and workflow-based applications.',
     icon: Cpu
   },
   {
     id: 'maintenance',
     code: '04',
     category: 'MAINTENANCE',
-    title: 'System Improvement',
-    description: 'Troubleshooting system issues and upgrading existing codebases.',
+    title: 'System Improvements',
+    description: 'Troubleshooting issues, fixing bugs, and improving existing applications.',
     icon: Wrench
   }
 ]

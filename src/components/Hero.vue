@@ -21,7 +21,7 @@
 
           <!-- Paragraph -->
           <p class="text-xs sm:text-sm md:text-base xl:text-lg text-main/70 leading-relaxed max-w-xl">
-            I specialize in building responsive web applications with modern JavaScript frameworks, clean UI design, and seamless API integrations.
+            I build and maintain web applications for real-world business and institutional needs, with a focus on responsive interfaces, API integration, and practical application development.
           </p>
 
           <!-- CTA Buttons -->
@@ -79,23 +79,23 @@
               <div><span class="text-main/40 mr-3 select-none">1</span><span class="text-purple-500 font-semibold">const</span> <span class="text-blue-500">developer</span> = {</div>
               <div><span class="text-main/40 mr-3 select-none">2</span>  name: <span class="text-emerald-500">"Mark Gil Sendin"</span>,</div>
               <div><span class="text-main/40 mr-3 select-none">3</span>  role: <span class="text-emerald-500">"Frontend Developer"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">4</span>  location: <span class="text-emerald-500">"Philippines"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">5</span>  stack: [</div>
-              <div><span class="text-main/40 mr-3 select-none">6</span>    <span class="text-emerald-500">"Vue.js"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">7</span>    <span class="text-emerald-500">"React"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">8</span>    <span class="text-emerald-500">"TypeScript"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">9</span>    <span class="text-emerald-500">"Tailwind CSS"</span></div>
-              <div><span class="text-main/40 mr-3 select-none">10</span> ]</div>
-              <div><span class="text-main/40 mr-3 select-none">11</span>};</div>
+              <div><span class="text-main/40 mr-3 select-none">4</span>  stack: [</div>
+              <div><span class="text-main/40 mr-3 select-none">5</span>    <span class="text-emerald-500">"Vue.js"</span>,</div>
+              <div><span class="text-main/40 mr-3 select-none">6</span>    <span class="text-emerald-500">"React"</span>,</div>
+              <div><span class="text-main/40 mr-3 select-none">7</span>    <span class="text-emerald-500">"Javascript"</span>,</div>
+              <div><span class="text-main/40 mr-3 select-none">8</span>    <span class="text-emerald-500">"Tailwind CSS"</span></div>
+              <div><span class="text-main/40 mr-3 select-none">9</span> ]</div>
+              <div><span class="text-main/40 mr-3 select-none">3</span>  openToOpportunities: <span class="text-amber-500">true</span>,</div>
+              <div><span class="text-main/40 mr-3 select-none">10</span>};</div>
             </div>
 
             <!-- Status Footer -->
-            <div class="px-5 py-3 border-t border-main/10 bg-main/2 flex items-center gap-2.5">
-              <span class="relative flex h-2 w-2">
+            <div class="px-5 py-5 border-t border-main/10 bg-main/2 flex items-center gap-2.5">
+              <!-- <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span class="text-xs text-main/60">open to opportunities</span>
+              <span class="text-xs text-main/60">open to opportunities: true</span> -->
             </div>
 
           </div>

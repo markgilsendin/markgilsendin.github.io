@@ -4,19 +4,19 @@
       
       <!-- Section Tag -->
       <p class="font-mono text-xs sm:text-base tracking-widest text-main/50 uppercase">
-        02 &mdash; SELECTED WORK
+        02 &mdash; Selected Projects & Contributions
       </p>
       
       <!-- Main Heading -->
       <div class="max-w-3xl">
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
-          Featured Projects
+          Projects I've Worked On
         </h2>
       </div>
 
       <!-- Description -->
       <p class="text-xs sm:text-sm md:text-base text-main/70">
-        Selected web applications, platforms, and frontend projects showcasing responsive interfaces, API integrations, and practical software solutions.
+        Selected institutional applications and frontend work I've contributed to throughout my development experience.
       </p>
 
       <!-- 2 Cards Per Row Grid -->
