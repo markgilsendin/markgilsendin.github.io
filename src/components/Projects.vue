@@ -1,5 +1,5 @@
 <template>
-  <section id="work" class="w-full">
+  <section id="projects" class="w-full">
     <div class="max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-4 sm:space-y-6">
       
       <!-- Section Tag -->
@@ -63,7 +63,7 @@
           <!-- Card Footer -->
           <div class="pt-4 border-t border-main/5 flex items-center justify-between gap-10 font-mono text-xs sm:text-sm">
             <router-link 
-              :to="`/projects/${project.id}`"
+              :to=ROUTES.CASE_STUDY(project.id)
               class="inline-flex items-center gap-2 text-primary transition-colors group/link whitespace-nowrap"
             >
               <span>Read Case Study</span>
@@ -80,7 +80,7 @@
       <!-- Footer Action -->
       <div class="pt-4 text-center">
         <router-link 
-          to="/projects" 
+          :to=ROUTES.ALL_PROJECTS
           class="group/link inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-semibold text-main/80 hover:text-primary border border-main/10 hover:border-primary/40 bg-canvas-alt/50 px-6 py-3 rounded-xl transition-all"
         >
           <span>View All Projects</span>
@@ -96,7 +96,7 @@
 import { computed } from 'vue'
 import { ArrowRight, Folder } from 'lucide-vue-next'
 import { projects } from '@/data/projects'
-
+import { ROUTES } from '@/constant/routes'
 
 // Display projects in 2-column grid
 const featuredProjects = computed(() => projects.slice(0, 4))

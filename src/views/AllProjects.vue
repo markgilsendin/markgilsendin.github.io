@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="space-y-4 max-w-3xl">
       <router-link 
-        to="/" 
+        :to=ROUTES.HOME
         class="inline-flex items-center gap-2 text-sm font-mono text-main/60 hover:text-main transition-colors"
       >
         &larr; Back to Home
@@ -89,7 +89,7 @@
           <!-- Card Footer -->
           <div class="pt-4 border-t border-main/5 flex items-center justify-between gap-10 font-mono text-xs sm:text-sm">
             <router-link 
-              :to="`/projects/${project.id}`"
+              :to=ROUTES.CASE_STUDY(project.id)
               class="inline-flex items-center gap-2 text-primary transition-colors group/link whitespace-nowrap"
             >
               <span>Read Case Study</span>
@@ -110,6 +110,7 @@
 import { ref, computed } from 'vue'
 import { projects } from '@/data/projects'
 import { ArrowRight, Folder } from 'lucide-vue-next'
+import { ROUTES } from '@/constant/routes'
 
 const selectedTag = ref('All')
 

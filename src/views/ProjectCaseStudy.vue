@@ -141,15 +141,30 @@
         </section>
 
         <!-- Technical Challenges -->
-        <section class="space-y-4 border-t border-main/10 pt-10">
+        <section class="space-y-6 border-t border-main/10 pt-10">
+          <!-- Section Title with Icon -->
           <div class="flex items-center gap-2">
             <Cpu class="w-5 h-5 text-primary shrink-0" />
             <h2 class="text-xl font-bold text-main tracking-tight">Technical Challenges</h2>
           </div>
 
-          <p class="text-xs sm:text-sm md:text-base text-main/70">
-            {{ project.caseStudy.technicalChallenges }}
-          </p>
+          <!-- Cards / List Grid Layout -->
+          <div class="grid grid-cols-1 gap-4">
+            <div 
+              v-for="(challenge, idx) in project.caseStudy.technicalChallenges" 
+              :key="challenge.title || idx"
+              class="p-5 sm:p-6 bg-canvas-alt border border-main/10 rounded-xl space-y-2 hover:border-main/20 transition-colors"
+            >
+              <h3 class="font-bold text-base text-main flex items-center gap-2">
+                <!-- Optional accent bullet indicator -->
+                <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>
+                {{ challenge.title }}
+              </h3>
+              <p class="text-xs sm:text-sm text-main/70 leading-relaxed pl-3.5">
+                {{ challenge.description }}
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- What I Learned -->
@@ -179,7 +194,7 @@
 
         <!-- Footer Navigation -->
         <div class="pt-8 border-t border-main/10 flex items-center justify-between">
-          <router-link to="/projects" class="inline-flex items-center gap-2 text-sm font-semibold text-main/60 hover:text-main transition-colors">
+          <router-link :to=ROUTES.ALL_PROJECTS class="inline-flex items-center gap-2 text-sm font-semibold text-main/60 hover:text-main transition-colors">
             <ArrowLeft class="w-4 h-4 shrink-0" />
             <span>All Projects</span>
           </router-link>
@@ -193,7 +208,7 @@
 
   <div v-else class="text-center py-24 space-y-4">
     <h1 class="text-2xl font-bold text-main">Project Not Found</h1>
-    <router-link to="/projects" class="text-primary underline inline-flex items-center gap-2">
+    <router-link :to=ROUTES.ALL_PROJECTS class="text-primary underline inline-flex items-center gap-2">
       <ArrowLeft class="w-4 h-4 shrink-0" />
       <span>Return to Projects List</span>
     </router-link>
@@ -222,6 +237,7 @@ import {
   Sparkles, 
   Award 
 } from 'lucide-vue-next'
+import { ROUTES } from '@/constant/routes'
 
 const route = useRoute()
 const project = computed(() => projects.find(p => p.id === route.params.id))

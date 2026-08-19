@@ -1,13 +1,13 @@
 <template>
   <section 
     id="contact" 
-    class="bg-canvas w-full relative overflow-hidden"
+    class="bg-canvas-alt w-full relative overflow-hidden"
   >
     <div class="relative max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-8">
       
       <!-- Section Tag -->
       <p class="font-mono text-xs sm:text-base tracking-widest text-main/50 uppercase">
-        04 &mdash; CONTACT
+        05 &mdash; CONTACT
       </p>
 
       <!-- Main Heading & Description Container -->

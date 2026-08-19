@@ -146,7 +146,8 @@ const activeSection = ref('')
 
 const navLinks = [
   { name: 'About', href: '/#about' },
-  { name: 'Work', href: '/#work' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Experience', href: '/#experience' },
   { name: 'Skills', href: '/#skills' },
 ]
 
@@ -170,7 +171,7 @@ const handleScrollSpy = () => {
     return
   }
 
-  const sections = ['about', 'work', 'skills', 'contact']
+  const sections = ['about', 'projects', 'experience', 'skills', 'contact']
   const navOffset = 120 // Header offset buffer
 
   for (const id of sections) {

@@ -1,7 +1,7 @@
 <template>
   <section 
     id="skills" 
-    class="bg-canvas-alt w-full relative overflow-hidden"
+    class="w-full relative overflow-hidden"
   >
     <div class="relative max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-12">
       
@@ -9,7 +9,7 @@
       <div class="space-y-6">
         <!-- Section Tag -->
         <p class="font-mono text-xs sm:text-base tracking-widest text-main/50 uppercase">
-          03 &mdash; TECH
+          04 &mdash; TECH
         </p>
 
         <!-- Main Heading -->
@@ -40,7 +40,7 @@
             <div
               v-for="tool in category.tools"
               :key="tool.name"
-              class="bg-canvas/40 group flex flex-col items-center justify-center p-5 rounded-xl shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-200 cursor-default"
+              class="bg-canvas/40 group flex flex-col items-center justify-center border border-main/10 p-5 rounded-xl shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-200 cursor-default"
             >
               <!-- Iconify Logo -->
               <Icon 
