@@ -66,13 +66,13 @@ const contactLinks = [
   { 
     name: 'GitHub', 
     icon: 'lucide:github', 
-    url: 'https://github.com/yourusername', 
+    url: 'https://github.com/markgilsendin', 
     isExternal: true 
   },
   { 
     name: 'LinkedIn', 
     icon: 'lucide:linkedin', 
-    url: 'https://linkedin.com/in/yourusername', 
+    url: 'https://www.linkedin.com/in/markgilsendin/', 
     isExternal: true 
   },
   { 

@@ -28,7 +28,7 @@
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
             <!-- View My Work -->
             <BaseLink 
-              href="#work" 
+              href="#projects" 
               variant="primary" 
               size="md"
               class="group"
@@ -71,7 +71,7 @@
                 <span class="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
                 <span class="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
               </div>
-              <span class="text-main/40 text-[11px]">developer.ts</span>
+              <span class="text-main/40 text-[11px]">developer.js</span>
             </div>
 
             <!-- Code Body -->
