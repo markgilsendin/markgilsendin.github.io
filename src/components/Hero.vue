@@ -28,10 +28,11 @@
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
             <!-- View My Work -->
             <BaseLink 
-              :href=ROUTES.SECTIONS.PROJECTS.hash
+              :href=ROUTES.SECTIONS.PROJECTS.id
               variant="primary" 
               size="md"
               class="group"
+              @click="scrollToSection($event, ROUTES.SECTIONS.PROJECTS.hash)"
             >
               <span>View My Work</span>
               <template #icon-right>
@@ -110,4 +111,7 @@
 <script setup>
 import BaseLink from '@/components/global/BaseLink.vue'
 import { ROUTES } from '../constant/routes'
+import { useScrollTo } from '@/composable/useScrollTo'
+
+const { scrollToSection } = useScrollTo()
 </script>

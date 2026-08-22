@@ -131,95 +131,81 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { Icon } from '@iconify/vue'
-import { ROUTES } from '@/constant/routes'
-import ThemeToggle from './ThemeToggle.vue'
-import BaseButton from '@/components/global/BaseButton.vue'
-import BaseLink from '@/components/global/BaseLink.vue'
+  import { ref, onMounted, onUnmounted } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { Icon } from '@iconify/vue'
+  import { ROUTES } from '@/constant/routes'
+  import { useScrollTo } from '@/composable/useScrollTo' 
+  import ThemeToggle from './ThemeToggle.vue'
+  import BaseButton from '@/components/global/BaseButton.vue'
+  import BaseLink from '@/components/global/BaseLink.vue'
 
-const router = useRouter()
-const route = useRoute()
+  const route = useRoute()
+  const { getSectionId, scrollToSection } = useScrollTo() 
 
-const isMobileMenuOpen = ref(false)
-const activeSection = ref('')
+  const isMobileMenuOpen = ref(false)
+  const activeSection = ref('')
 
-const navLinks = [
-  { name: 'About', href: ROUTES.SECTIONS.ABOUT.hash },
-  { name: 'Projects', href: ROUTES.SECTIONS.PROJECTS.hash },
-  { name: 'Experience', href: ROUTES.SECTIONS.EXPERIENCE.hash },
-  { name: 'Skills', href: ROUTES.SECTIONS.SKILLS.hash },
-]
+  const navLinks = [
+    { name: 'About', href: ROUTES.SECTIONS.ABOUT.hash },
+    { name: 'Projects', href: ROUTES.SECTIONS.PROJECTS.hash },
+    { name: 'Experience', href: ROUTES.SECTIONS.EXPERIENCE.hash },
+    { name: 'Skills', href: ROUTES.SECTIONS.SKILLS.hash },
+  ]
 
-// Helper function to safely extract the section ID regardless of formatting ('/#about' vs '#about')
-const getSectionId = (href) => href.replace('/#', '').replace('#', '')
-
-// Smooth Scroll Handler
-const scrollToSection = async (e, href) => {
-  e.preventDefault()
-  const targetId = getSectionId(href)
-
-  // If already on the home page, perform inline smooth scroll
-  if (route.path === '/' || route.path === '') {
-    const el = document.getElementById(targetId)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
+  // Scrollspy Logic
+  const handleScrollSpy = () => {
+    if (route.path !== '/' && route.path !== '') {
+      activeSection.value = ''
+      return
     }
-  } else {
-    // If on a sub-page (e.g. /project/:id), navigate back home with the target hash
-    await router.push({ path: '/', hash: `#${targetId}` })
-  }
-}
 
-// Scrollspy Logic
-const handleScrollSpy = () => {
-  // Only track scrollspy when viewing the home page
-  if (route.path !== '/' && route.path !== '') {
-    activeSection.value = ''
-    return
-  }
+    const scrollPosition = window.scrollY
+    const windowHeight = window.innerHeight
+    const fullHeight = document.documentElement.scrollHeight
 
-  const scrollPosition = window.scrollY
-  const windowHeight = window.innerHeight
-  const fullHeight = document.documentElement.scrollHeight
+    if (scrollPosition < 200) {
+      if (activeSection.value !== '') {
+        activeSection.value = ''
+        history.replaceState(null, '', '/#/')
+      }
+      return
+    }
 
-  // Reset active tab when near top of hero section
-  if (scrollPosition < 200) {
-    activeSection.value = ''
-    return
-  }
+    if (Math.ceil(scrollPosition + windowHeight) >= fullHeight - 10) {
+      if (activeSection.value !== 'contact') {
+        activeSection.value = 'contact'
+        history.replaceState(null, '', '/#/#contact')
+      }
+      return
+    }
 
-  // Force contact section active if scrolled to bottom
-  if (Math.ceil(scrollPosition + windowHeight) >= fullHeight - 10) {
-    activeSection.value = 'contact'
-    return
-  }
+    const sections = ['about', 'projects', 'experience', 'skills', 'contact']
+    const navOffset = 150
 
-  // Highlight sections based on viewport position
-  const sections = ['about', 'projects', 'experience', 'skills', 'contact']
-  const navOffset = 150
+    for (const id of sections) {
+      const el = document.getElementById(id)
+      if (el) {
+        const top = el.offsetTop - navOffset
+        const height = el.offsetHeight
 
-  for (const id of sections) {
-    const el = document.getElementById(id)
-    if (el) {
-      const top = el.offsetTop - navOffset
-      const height = el.offsetHeight
-
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        activeSection.value = id
-        break
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          if (activeSection.value !== id) {
+            activeSection.value = id
+            history.replaceState(null, '', `/#/#${id}`)
+          }
+          break
+        }
       }
     }
   }
-}
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScrollSpy, { passive: true })
-  handleScrollSpy()
-})
+  onMounted(() => {
+    window.addEventListener('scroll', handleScrollSpy, { passive: true })
+    handleScrollSpy()
+  })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScrollSpy)
-})
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScrollSpy)
+  })
 </script>
