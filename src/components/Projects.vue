@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="w-full">
+  <section :id=ROUTES.SECTIONS.PROJECTS.id class="w-full">
     <div class="max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-4 sm:space-y-6">
       
       <!-- Section Tag -->

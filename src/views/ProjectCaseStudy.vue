@@ -3,7 +3,7 @@
     
     <!-- Navigation Back Link -->
     <router-link 
-      to="/#work" 
+      :to="{ path: ROUTES.SECTIONS.PROJECTS.path, hash: ROUTES.SECTIONS.PROJECTS.hash }"
       class="inline-flex items-center gap-2 text-sm font-mono text-main/60 hover:text-main transition-colors"
     >
       <ArrowLeft class="w-4 h-4 shrink-0" />

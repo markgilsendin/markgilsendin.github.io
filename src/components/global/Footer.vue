@@ -1,11 +1,17 @@
 <template>
   <footer class="bg-canvas-alt border-t border-main/10 w-full">
-    <div class="max-w-7xl mx-auto px-10 py-8 sm:px-16 lg:px-24 flex items-center justify-center">
-      <p class="font-mono text-base text-main/50">
-        &copy; {{ currentYear }} Mark Gil Sendin
-      </p>
-    </div>
-  </footer>
+  <div class="max-w-7xl mx-auto px-10 py-8 sm:px-16 lg:px-24 text-center space-y-2">
+    
+    <p class="font-mono text-sm text-main/50">
+      This portfolio is continuously evolving.
+    </p>
+
+    <p class="font-mono text-sm text-main/40">
+      &copy; {{ currentYear }} Mark Gil Sendin
+    </p>
+
+  </div>
+</footer>
 </template>
 
 <script setup>

@@ -28,7 +28,7 @@
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
             <!-- View My Work -->
             <BaseLink 
-              href="#projects" 
+              :href=ROUTES.SECTIONS.PROJECTS.hash
               variant="primary" 
               size="md"
               class="group"
@@ -62,7 +62,7 @@
 
         <!-- Right Column: Interactive Code Snippet Card -->
         <div class="lg:col-span-5 w-full flex justify-center lg:justify-end">
-          <div class="w-full max-w-md rounded-2xl border border-main/10 bg-canvas/80 backdrop-blur-md shadow-xl shadow-main/5 overflow-hidden font-mono text-xs sm:text-sm">
+          <div class="w-full rounded-2xl border border-main/10 bg-canvas/80 backdrop-blur-md shadow-xl shadow-main/5 overflow-hidden font-mono text-xs sm:text-sm">
             
             <!-- Window Bar -->
             <div class="px-4 py-3 border-b border-main/10 bg-main/2 flex items-center justify-between">
@@ -109,4 +109,5 @@
 
 <script setup>
 import BaseLink from '@/components/global/BaseLink.vue'
+import { ROUTES } from '../constant/routes'
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="bg-canvas-alt w-full">
+  <section :id=ROUTES.SECTIONS.EXPERIENCE.id class="bg-canvas-alt w-full">
     <div class="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-16 sm:py-20 lg:py-32 space-y-4 sm:space-y-6">
       
       <!-- Section Tag -->
@@ -100,6 +100,7 @@
 
 <script setup>
 import { Building2, CheckCircle2 } from 'lucide-vue-next'
+import { ROUTES } from '../constant/routes'
 
 const experiences = [
   {

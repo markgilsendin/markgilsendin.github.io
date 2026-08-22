@@ -3,8 +3,7 @@
     <div class="max-w-7xl mx-auto px-10 sm:px-16 lg:px-24 h-18 flex items-center justify-between">
       
       <!-- Brand Logo -->
-     <router-link to="/" class="flex items-center gap-3 group shrink-0">
-        <!-- Avatar Container with Online Status Dot -->
+      <router-link :to="ROUTES.HOME.path" class="flex items-center gap-3 group shrink-0">
         <div class="relative">
           <div class="w-12 h-12 bg-white rounded-full overflow-hidden border-2 border-primary/80 group-hover:border-primary transition-all duration-300 group-hover:shadow-primary/20">
             <img 
@@ -13,14 +12,12 @@
               class="w-full h-full object-cover object-center"
             />
           </div>
-          <!-- Active Status Indicator -->
           <span 
             class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-canvas rounded-full" 
             title="Open to opportunities"
           ></span>
         </div>
 
-        <!-- Name -->
         <span class="font-bold text-base tracking-tight text-main/80 hover:text-main">
           Mark Gil Sendin
         </span>
@@ -34,13 +31,13 @@
           :href="link.href"
           @click="scrollToSection($event, link.href)"
           class="relative text-sm font-semibold tracking-wide py-1 text-main/70 hover:text-main transition-colors duration-200 group"
-          :class="activeSection === link.href.replace('/#', '') ? 'text-primary' : 'text-main/70 hover:text-main'"
+          :class="activeSection === getSectionId(link.href) ? 'text-primary' : 'text-main/70 hover:text-main'"
         >
           {{ link.name }}
           <!-- Animated Underline -->
           <span 
             class="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 rounded-full"
-            :class="activeSection === link.href.replace('/#', '') ? 'w-full' : 'w-0 group-hover:w-full'"
+            :class="activeSection === getSectionId(link.href) ? 'w-full' : 'w-0 group-hover:w-full'"
           ></span>
         </a>
       </nav>
@@ -49,13 +46,12 @@
       <div class="hidden lg:flex items-center gap-4">
         <ThemeToggle />
         
-        <!-- Animated CTA Button -->
         <BaseLink 
-          href="/#contact" 
+          :href="ROUTES.SECTIONS.CONTACT.hash" 
           variant="primary" 
           size="sm"
           class="group shadow-sm hover:shadow-primary/25 transition-shadow"
-          @click="scrollToSection($event, '/#contact')"
+          @click="scrollToSection($event, ROUTES.SECTIONS.CONTACT.hash)"
         >
           <span>Let's Talk</span>
           <template #icon-right>
@@ -108,19 +104,19 @@
           :href="link.href" 
           @click="scrollToSection($event, link.href); isMobileMenuOpen = false"
           class="text-sm font-semibold uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-200 flex items-center justify-between"
-          :class="activeSection === link.href.replace('/#', '') ? 'text-primary bg-primary/10' : 'text-main/80 hover:text-main hover:bg-main/5'"
+          :class="activeSection === getSectionId(link.href) ? 'text-primary bg-primary/10' : 'text-main/80 hover:text-main hover:bg-main/5'"
         >
           <span>{{ link.name }}</span>
-          <span v-if="activeSection === link.href.replace('/#', '')" class="w-2 h-2 rounded-full bg-primary"></span>
+          <span v-if="activeSection === getSectionId(link.href)" class="w-2 h-2 rounded-full bg-primary"></span>
         </a>
       </nav>
 
       <BaseLink 
-        href="/#contact" 
+        :href="ROUTES.SECTIONS.CONTACT.hash"
         variant="primary" 
         size="md"
         class="w-full group justify-center shadow-md"
-        @click="scrollToSection($event, '/#contact'); isMobileMenuOpen = false"
+        @click="scrollToSection($event, ROUTES.SECTIONS.CONTACT.hash); isMobileMenuOpen = false"
       >
         <span>Let's Talk</span>
         <template #icon-right>
@@ -137,6 +133,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
+import { ROUTES } from '@/constant/routes'
 import ThemeToggle from './ThemeToggle.vue'
 import BaseButton from '@/components/global/BaseButton.vue'
 import BaseLink from '@/components/global/BaseLink.vue'
@@ -145,15 +142,18 @@ const isMobileMenuOpen = ref(false)
 const activeSection = ref('')
 
 const navLinks = [
-  { name: 'About', href: '/#about' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Experience', href: '/#experience' },
-  { name: 'Skills', href: '/#skills' },
+  { name: 'About', href: ROUTES.SECTIONS.ABOUT.hash },
+  { name: 'Projects', href: ROUTES.SECTIONS.PROJECTS.hash },
+  { name: 'Experience', href: ROUTES.SECTIONS.EXPERIENCE.hash },
+  { name: 'Skills', href: ROUTES.SECTIONS.SKILLS.hash },
 ]
+
+// Helper function to safely extract the section ID regardless of formatting ('/#about' vs '#about')
+const getSectionId = (href) => href.replace('/#', '').replace('#', '')
 
 // Smooth Scroll Handler
 const scrollToSection = (e, href) => {
-  const targetId = href.replace('/#', '')
+  const targetId = getSectionId(href)
   const el = document.getElementById(targetId)
   if (el) {
     e.preventDefault()
@@ -161,18 +161,27 @@ const scrollToSection = (e, href) => {
   }
 }
 
-// Scrollspy Logic based on element screen position
+// Scrollspy Logic
 const handleScrollSpy = () => {
   const scrollPosition = window.scrollY
-  
-  // 1. Reset if near the top (Hero area)
+  const windowHeight = window.innerHeight
+  const fullHeight = document.documentElement.scrollHeight
+
+  // Reset active tab when near top of hero section
   if (scrollPosition < 200) {
     activeSection.value = ''
     return
   }
 
+  // Force contact section active if scrolled to bottom
+  if (Math.ceil(scrollPosition + windowHeight) >= fullHeight - 10) {
+    activeSection.value = 'contact'
+    return
+  }
+
+  // Highlight sections based on viewport position
   const sections = ['about', 'projects', 'experience', 'skills', 'contact']
-  const navOffset = 120 // Header offset buffer
+  const navOffset = 150
 
   for (const id of sections) {
     const el = document.getElementById(id)
@@ -180,7 +189,6 @@ const handleScrollSpy = () => {
       const top = el.offsetTop - navOffset
       const height = el.offsetHeight
 
-      // Check if current scroll position falls inside this section
       if (scrollPosition >= top && scrollPosition < top + height) {
         activeSection.value = id
         break
@@ -191,7 +199,7 @@ const handleScrollSpy = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScrollSpy, { passive: true })
-  handleScrollSpy() // Run once on mount to set initial state
+  handleScrollSpy()
 })
 
 onUnmounted(() => {

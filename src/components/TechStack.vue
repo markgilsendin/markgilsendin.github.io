@@ -1,6 +1,6 @@
 <template>
   <section 
-    id="skills" 
+    :id=ROUTES.SECTIONS.SKILLS.id
     class="w-full relative overflow-hidden"
   >
     <div class="relative max-w-7xl mx-auto px-10 py-16 sm:px-16 sm:py-20 lg:px-24 lg:py-32 space-y-12">
@@ -55,9 +55,9 @@
                 </span>
                 <span 
                   v-if="tool.subtitle" 
-                  class="font-mono text-[10px] text-main/50 group-hover:text-primary transition-colors"
+                  class="font-mono text-[11px] text-main/50 italic"
                 >
-                  ({{ tool.subtitle }})
+                  {{ tool.subtitle }}
                 </span>
               </div>
 
@@ -74,6 +74,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import { ROUTES } from '../constant/routes'
 
 const techCategories = ref([
   {
