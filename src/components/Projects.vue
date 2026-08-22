@@ -15,7 +15,7 @@
       </div>
 
       <!-- Description -->
-      <p class="text-xs sm:text-sm md:text-base text-main/70">
+      <p class="text-sm md:text-lg text-main/70">
         Selected institutional applications and frontend work I've contributed to throughout my development experience.
       </p>
 
@@ -28,8 +28,8 @@
         >
           <div class="space-y-4">
             <!-- Top Metadata -->
-            <div class="flex items-center justify-between gap-2 font-mono text-xs">
-              <div class="flex items-center gap-1.5 text-primary font-bold tracking-wider uppercase">
+            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 font-mono text-xs">
+              <div class="flex items-center gap-1.5 text-primary font-bold tracking-wider uppercase shrink-0">
                 <Folder class="w-4 h-4" />
                 <span>PROJECT 0{{ index + 1 }}</span>
               </div>

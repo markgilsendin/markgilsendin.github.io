@@ -15,7 +15,7 @@
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-main tracking-tight leading-tight">
           Let's build something useful.
         </h2>
-        <p class="text-xs sm:text-sm md:text-base text-main/70 font-normal leading-relaxed">
+        <p class="text-sm md:text-lg text-main/70 font-normal leading-relaxed">
           Have a project, opportunity, or idea you'd like to discuss? I'd be happy to connect.
         </p>
       </div>

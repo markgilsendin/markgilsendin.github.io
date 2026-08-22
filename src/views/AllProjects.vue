@@ -69,7 +69,7 @@
               <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight">
                 {{ project.title }}
               </h3>
-              <p class="text-sm text-main/70 leading-relaxed">
+              <p class="text-sm md:text-lg text-main/70 leading-relaxed">
                 {{ project.shortDescription }}
               </p>
             </div>

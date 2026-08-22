@@ -15,7 +15,7 @@
       </div>
 
       <!-- Description -->
-      <p class="text-xs sm:text-sm md:text-base text-main/70">
+      <p class="text-sm md:text-lg text-main/70">
         My professional experience in web and application development.
       </p>
 

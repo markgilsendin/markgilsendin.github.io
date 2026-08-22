@@ -4,7 +4,7 @@
     <!-- Navigation Back Link -->
     <router-link 
       :to="{ path: ROUTES.SECTIONS.PROJECTS.path, hash: ROUTES.SECTIONS.PROJECTS.hash }"
-      class="inline-flex items-center gap-2 text-sm font-mono text-main/60 hover:text-main transition-colors"
+      class="inline-flex items-center gap-2 text-base font-mono text-main/60 hover:text-main transition-colors"
     >
       <ArrowLeft class="w-4 h-4 shrink-0" />
       <span>Back to Selected Work</span>
@@ -23,7 +23,7 @@
         {{ project.title }}
       </h1>
 
-      <p class="text-xs sm:text-sm md:text-base text-main/70">
+      <p class="text-sm md:text-lg text-main/70">
         {{ project.shortDescription }}
       </p>
 
@@ -106,16 +106,16 @@
             <h2 class="text-xl font-bold text-main tracking-tight">Overview</h2>
           </div>
 
-          <p class="text-xs sm:text-sm md:text-base text-main/70">
+          <p class="text-sm md:text-base text-main/70">
             {{ project.caseStudy.overview }}
           </p>
 
           <div class="p-5 sm:p-6 bg-main/5 border-l-4 border-primary rounded-r-2xl space-y-2 mt-4">
             <div class="flex items-center gap-2">
               <Target class="w-4 h-4 text-primary shrink-0" />
-              <h4 class="font-mono text-xs uppercase tracking-wider font-bold text-main">The Challenge</h4>
+              <h4 class="font-mono text-sm md:text-base uppercase tracking-wider font-bold text-main">The Challenge</h4>
             </div>
-            <p class="text-xs sm:text-sm md:text-base text-main/70 italic">
+            <p class="text-sm md:text-base text-main/70 italic">
               {{ project.caseStudy.challenge }}
             </p>
           </div>
@@ -155,12 +155,12 @@
               :key="challenge.title || idx"
               class="p-5 sm:p-6 bg-canvas-alt border border-main/10 rounded-xl space-y-2 hover:border-main/20 transition-colors"
             >
-              <h3 class="font-bold text-base text-main flex items-center gap-2">
+              <h3 class="font-bold text-sm md:text-base text-main flex items-center gap-2">
                 <!-- Optional accent bullet indicator -->
                 <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0"></span>
                 {{ challenge.title }}
               </h3>
-              <p class="text-xs sm:text-sm text-main/70 leading-relaxed pl-3.5">
+              <p class="text-main/70 leading-relaxed pl-3.5">
                 {{ challenge.description }}
               </p>
             </div>
@@ -174,7 +174,7 @@
             <h2 class="text-xl font-bold text-main tracking-tight">What I Learned</h2>
           </div>
 
-          <p class="text-xs sm:text-sm md:text-base text-main/70">
+          <p class="text-sm md:text-base text-main/70">
             {{ project.caseStudy.whatILearned }}
           </p>
         </section>
@@ -186,7 +186,7 @@
             <h2 class="text-xl font-bold text-main tracking-tight">Outcome</h2>
           </div>
 
-          <div class="p-6 bg-primary/10 border border-primary/20 rounded-xl text-primary text-base italic flex gap-3 items-start">
+          <div class="p-6 bg-primary/10 border border-primary/20 rounded-xl text-primary text-sm md:text-base italic flex gap-3 items-start">
             <Award class="w-5 h-5 shrink-0 mt-0.5" />
             <p>{{ project.caseStudy.outcome }}</p>
           </div>
@@ -194,7 +194,7 @@
 
         <!-- Footer Navigation -->
         <div class="pt-8 border-t border-main/10 flex items-center justify-between">
-          <router-link :to=ROUTES.ALL_PROJECTS class="inline-flex items-center gap-2 text-sm font-semibold text-main/60 hover:text-main transition-colors">
+          <router-link :to=ROUTES.ALL_PROJECTS class="inline-flex items-center gap-2 text-base font-semibold text-main/60 hover:text-main transition-colors">
             <ArrowLeft class="w-4 h-4 shrink-0" />
             <span>All Projects</span>
           </router-link>

@@ -18,7 +18,7 @@
       </div>
 
       <!-- Description -->
-      <p class="text-xs sm:text-sm md:text-base text-main/70 font-normal">
+      <p class="text-sm md:text-lg text-main/70 font-normal">
         I work primarily on the frontend of web applications, turning designs into functional interfaces and connecting them with backend services. 
         My experience includes institutional systems, dashboards, workflow-based applications, and business websites.
       </p>

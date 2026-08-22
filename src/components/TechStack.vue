@@ -17,7 +17,7 @@
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
             Skills & Tools
           </h2>
-          <p class="text-xs sm:text-sm md:text-base text-main/70 font-normal">
+          <p class="text-sm md:text-lg text-main/70 font-normal">
             Technologies and tools I use to build, integrate, and maintain web applications.
           </p>
         </div>

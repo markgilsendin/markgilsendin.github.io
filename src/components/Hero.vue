@@ -20,7 +20,7 @@
           </h1>
 
           <!-- Paragraph -->
-          <p class="text-xs sm:text-sm md:text-base xl:text-lg text-main/70 leading-relaxed max-w-xl">
+          <p class="text-sm md:text-base xl:text-lg text-main/70 leading-relaxed max-w-xl">
             I build and maintain web applications for real-world business and institutional needs, with a focus on responsive interfaces, API integration, and practical application development.
           </p>
 
