@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { ROUTES } from '@/constant/routes'
 import Home from '@/views/Home.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     { 
       path: ROUTES.HOME.path, 
@@ -16,8 +16,8 @@ const router = createRouter({
       component: () => import('@/views/AllProjects.vue') 
     },
     { 
-      path: '/project/:id', 
-      name: ROUTES.CASE_STUDY().name, 
+      path: ROUTES.CASE_STUDY.path, 
+      name: ROUTES.CASE_STUDY.name, 
       component: () => import('@/views/ProjectCaseStudy.vue') 
     }
   ],
