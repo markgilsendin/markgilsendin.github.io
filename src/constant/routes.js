@@ -1,11 +1,10 @@
 export const ROUTES = {
   HOME: { name: 'home', path: '/' },
   ALL_PROJECTS: { name: 'all-projects', path: '/all-projects' },
-  CASE_STUDY: { 
-    name: 'case-study', 
-    path: '/project/:id',
-    getRoute: (id) => ({ name: 'case-study', params: { id } })
-  },
+  CASE_STUDY: Object.assign(
+    (id) => ({ name: 'case-study', params: { id }, path: `/project/${id}` }),
+    { routeName: 'case-study', path: '/project/:id' }
+  ),
 
   SECTIONS: {
     ABOUT: { id: 'about', path: '/', hash: '#about' },

@@ -17,7 +17,7 @@ const router = createRouter({
     },
     { 
       path: ROUTES.CASE_STUDY.path, 
-      name: ROUTES.CASE_STUDY.name, 
+      name: ROUTES.CASE_STUDY.routeName, 
       component: () => import('@/views/ProjectCaseStudy.vue') 
     }
   ],

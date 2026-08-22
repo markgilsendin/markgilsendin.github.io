@@ -132,11 +132,15 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { ROUTES } from '@/constant/routes'
 import ThemeToggle from './ThemeToggle.vue'
 import BaseButton from '@/components/global/BaseButton.vue'
 import BaseLink from '@/components/global/BaseLink.vue'
+
+const router = useRouter()
+const route = useRoute()
 
 const isMobileMenuOpen = ref(false)
 const activeSection = ref('')
@@ -152,17 +156,30 @@ const navLinks = [
 const getSectionId = (href) => href.replace('/#', '').replace('#', '')
 
 // Smooth Scroll Handler
-const scrollToSection = (e, href) => {
+const scrollToSection = async (e, href) => {
+  e.preventDefault()
   const targetId = getSectionId(href)
-  const el = document.getElementById(targetId)
-  if (el) {
-    e.preventDefault()
-    el.scrollIntoView({ behavior: 'smooth' })
+
+  // If already on the home page, perform inline smooth scroll
+  if (route.path === '/' || route.path === '') {
+    const el = document.getElementById(targetId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  } else {
+    // If on a sub-page (e.g. /project/:id), navigate back home with the target hash
+    await router.push({ path: '/', hash: `#${targetId}` })
   }
 }
 
 // Scrollspy Logic
 const handleScrollSpy = () => {
+  // Only track scrollspy when viewing the home page
+  if (route.path !== '/' && route.path !== '') {
+    activeSection.value = ''
+    return
+  }
+
   const scrollPosition = window.scrollY
   const windowHeight = window.innerHeight
   const fullHeight = document.documentElement.scrollHeight
