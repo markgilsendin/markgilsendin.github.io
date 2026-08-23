@@ -13,8 +13,12 @@ const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID
 if (gaId) {
   app.use(VueGtag, {
     property: {
-      id: gaId
-    }
+      id: gaId,
+      params: {
+        send_page_view: true 
+      }
+    },
+    useGtag: true
   }, router)
 }
 
