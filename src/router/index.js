@@ -8,17 +8,20 @@ const router = createRouter({
     { 
       path: ROUTES.HOME.path, 
       name: ROUTES.HOME.name, 
-      component: Home 
+      component: Home,
+      meta: { title: 'Mark Gil Sendin | Portfolio' }
     },
     { 
       path: ROUTES.ALL_PROJECTS.path, 
       name: ROUTES.ALL_PROJECTS.name, 
-      component: () => import('@/views/AllProjects.vue') 
+      component: () => import('@/views/AllProjects.vue'),
+      meta: { title: 'Projects | Mark Gil Sendin' }
     },
     { 
       path: ROUTES.CASE_STUDY.path, 
       name: ROUTES.CASE_STUDY.routeName, 
-      component: () => import('@/views/ProjectCaseStudy.vue') 
+      component: () => import('@/views/ProjectCaseStudy.vue'),
+      meta: { title: 'Case Study | Mark Gil Sendin' }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -37,9 +40,7 @@ const router = createRouter({
 
 // Update document title dynamically after every route change
 router.afterEach((to) => {
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
+  document.title = to.meta.title || 'Mark Gil Sendin | Portfolio'
 })
 
 export default router
