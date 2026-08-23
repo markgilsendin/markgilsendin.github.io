@@ -35,4 +35,11 @@ const router = createRouter({
   }
 })
 
+// Update document title dynamically after every route change
+router.afterEach((to) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+})
+
 export default router
