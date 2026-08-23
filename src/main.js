@@ -10,13 +10,17 @@ app.use(router)
 
 const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID
 
-if (gaId) {
+const allowedHostnames = [
+  'markgilsendin.github.io',
+  'localhost',
+  '127.0.0.1'
+]
+
+if (gaId && allowedHostnames.includes(window.location.hostname)) {
   app.use(VueGtag, {
     property: {
       id: gaId,
-      params: {
-        send_page_view: true 
-      }
+      params: { send_page_view: true }
     },
     useGtag: true
   }, router)
