@@ -80,14 +80,14 @@ const techCategories = ref([
   {
     title: 'Frontend',
     tools: [
-      { name: 'React', icon: 'logos:react' },
-      { name: 'Next.js', icon: 'logos:nextjs-icon' },
       { name: 'Vue.js', icon: 'logos:vue' },
+      { name: 'React', icon: 'logos:react' },
       { name: 'JavaScript', icon: 'logos:javascript' },
       { name: 'TypeScript', icon: 'logos:typescript-icon' },
       { name: 'HTML', icon: 'logos:html-5' },
       { name: 'CSS', icon: 'logos:css-3' },
-      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' }
+      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
+      { name: 'Wordpress', icon: 'logos:wordpress-icon' },
     ]
   },
   {
