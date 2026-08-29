@@ -44,7 +44,7 @@
 
             <!-- Download CV -->
             <BaseLink 
-              href="/Mark Gil Sendin - CV.pdf" 
+              href="/CV - Mark Gil Sendin.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               variant="outline" 
