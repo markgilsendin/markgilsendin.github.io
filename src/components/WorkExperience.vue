@@ -72,7 +72,7 @@
               <div class="lg:col-span-7 space-y-4 lg:border-l lg:border-main/10 lg:pl-8 pt-4 lg:pt-0 border-t border-main/10 lg:border-t-0">
                 <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-main/50 font-bold">
                   <CheckCircle2 class="w-4 h-4 text-primary shrink-0" />
-                  <span>Selected Responsibilities</span>
+                  <span>Highlights</span>
                 </div>
 
                 <!-- Responsive Grid: 1 col on mobile, 2 cols on tablet/desktop -->
@@ -119,7 +119,7 @@ const experiences = [
       'Integrated REST APIs with Axios, handling loading, error, and form-validation states',
       'Took over an unfinished vanilla JavaScript certificate and report generation tool and brought it to production',
       'Set up the project structure for a React and TypeScript service request system and reviewed code written by an intern developer',
-      'Contributing to the School Management System (in development) as one of three frontend developers',
+      'Contributing to the School Management System (in development) as one of three frontend developers, using Next.js, TypeScript, Zod, TanStack Query and Husky git hooks',
       'Guide student assistants assigned to me on frontend tasks'
     ]
   },

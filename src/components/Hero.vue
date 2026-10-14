@@ -9,19 +9,32 @@
           
           <!-- Sub-headline Tag -->
           <p class="text-xs sm:text-sm xl:text-lg tracking-widest text-primary uppercase">
-            FRONTEND DEVELOPER
+            FRONTEND DEVELOPER &middot; VUE &amp; REACT
           </p>
 
           <!-- Main Headline -->
-          <h1 class="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-main tracking-tight leading-[1.1]">
-            Building clean,<br class="hidden sm:inline" />
-            responsive web<br class="hidden sm:inline" />
-            applications.
+          <h1 class="space-y-3 sm:space-y-4">
+            <span class="block text-4xl sm:text-5xl xl:text-6xl font-black text-main tracking-tight leading-[1.1]">
+              Hi, I'm Mark Gil.
+            </span>
+            <span class="block text-xl sm:text-2xl xl:text-3xl font-semibold text-main/70 tracking-tight leading-snug max-w-xl">
+              I build responsive web interfaces with
+              <span class="text-primary">Vue and React</span>.
+            </span>
           </h1>
 
           <!-- Paragraph -->
           <p class="text-sm md:text-base xl:text-lg text-main/70 leading-relaxed max-w-xl">
-            I build and maintain web applications for real-world business and institutional needs, with a focus on responsive interfaces, API integration, and practical application development.
+            I turn designs into responsive, component-based web interfaces and connect them to REST APIs, working mainly with Vue 3, React, TypeScript and Tailwind CSS.
+          </p>
+
+          <!-- Availability -->
+          <p class="inline-flex items-center gap-2.5 text-xs sm:text-sm text-main/70">
+            <span class="relative flex h-2 w-2 shrink-0">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Open to remote frontend roles, in the Philippines or international.
           </p>
 
           <!-- CTA Buttons -->
@@ -44,7 +57,7 @@
 
             <!-- Download CV -->
             <BaseLink 
-              href="/CV - Mark Gil Sendin.pdf" 
+              :href="CV_URL"
               target="_blank"
               rel="noopener noreferrer"
               variant="outline" 
@@ -77,26 +90,23 @@
 
             <!-- Code Body -->
             <div class="p-5 space-y-1.5 text-main/80 overflow-x-auto leading-relaxed">
-              <div><span class="text-main/40 mr-3 select-none">1</span><span class="text-purple-500 font-semibold">const</span> <span class="text-blue-500">developer</span> = {</div>
-              <div><span class="text-main/40 mr-3 select-none">2</span>  name: <span class="text-emerald-500">"Mark Gil Sendin"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">3</span>  role: <span class="text-emerald-500">"Frontend Developer"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">4</span>  stack: [</div>
-              <div><span class="text-main/40 mr-3 select-none">5</span>    <span class="text-emerald-500">"Vue.js"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">6</span>    <span class="text-emerald-500">"React"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">7</span>    <span class="text-emerald-500">"Javascript"</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">8</span>    <span class="text-emerald-500">"Tailwind CSS"</span></div>
-              <div><span class="text-main/40 mr-3 select-none">9</span> ]</div>
-              <div><span class="text-main/40 mr-3 select-none">3</span>  openToOpportunities: <span class="text-amber-500">true</span>,</div>
-              <div><span class="text-main/40 mr-3 select-none">10</span>};</div>
+              <div
+                v-for="(line, i) in codeLines"
+                :key="i"
+                class="whitespace-pre"
+              ><span class="inline-block w-5 text-right text-main/40 mr-3 select-none">{{ i + 1 }}</span><template
+                  v-for="(part, j) in line"
+                  :key="j"
+                ><span :class="tokenClass[part.t]">{{ part.v }}</span></template></div>
             </div>
 
             <!-- Status Footer -->
-            <div class="px-5 py-5 border-t border-main/10 bg-main/2 flex items-center gap-2.5">
-              <!-- <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <div class="px-5 py-4 border-t border-main/10 bg-main/2 flex items-center gap-2.5">
+              <span class="relative flex h-2 w-2 shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span class="text-xs text-main/60">open to opportunities: true</span> -->
+              <span class="text-xs text-main/60">Open to remote roles &middot; PH &amp; international</span>
             </div>
 
           </div>
@@ -110,8 +120,32 @@
 
 <script setup>
 import BaseLink from '@/components/global/BaseLink.vue'
-import { ROUTES } from '../constant/routes'
+import { ROUTES, CV_URL } from '../constant/routes'
 import { useScrollTo } from '@/composable/useScrollTo'
 
 const { scrollToSection } = useScrollTo()
+
+// Code card content. Each line is a list of tokens: k = keyword, v = variable,
+// s = string, b = boolean, p = plain text. Line numbers are generated.
+const tokenClass = {
+  k: 'text-purple-500 font-semibold',
+  v: 'text-blue-500',
+  s: 'text-emerald-500',
+  b: 'text-amber-500',
+  p: ''
+}
+
+const codeLines = [
+  [{ t: 'k', v: 'const' }, { t: 'p', v: ' ' }, { t: 'v', v: 'developer' }, { t: 'p', v: ' = {' }],
+  [{ t: 'p', v: '  name: ' }, { t: 's', v: '"Mark Gil Sendin"' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '  role: ' }, { t: 's', v: '"Frontend Developer"' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '  stack: [' }],
+  [{ t: 'p', v: '    ' }, { t: 's', v: '"Vue.js"' }, { t: 'p', v: ', ' }, { t: 's', v: '"React"' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '    ' }, { t: 's', v: '"TypeScript"' }, { t: 'p', v: ', ' }, { t: 's', v: '"Tailwind CSS"' }],
+  [{ t: 'p', v: '  ],' }],
+  [{ t: 'p', v: '  location: ' }, { t: 's', v: '"Philippines"' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '  workSetup: ' }, { t: 's', v: '"Remote (PH / International)"' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '  openToOpportunities: ' }, { t: 'b', v: 'true' }, { t: 'p', v: ',' }],
+  [{ t: 'p', v: '};' }]
+]
 </script>

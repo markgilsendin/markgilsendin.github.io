@@ -13,26 +13,51 @@
       <!-- Main Heading & Description Container -->
       <div class="max-w-2xl space-y-4">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-main tracking-tight leading-tight">
-          Let's build something useful.
+          Open to remote frontend roles.
         </h2>
         <p class="text-sm md:text-lg text-main/70 font-normal leading-relaxed">
-          Have a project, opportunity, or idea you'd like to discuss? I'd be happy to connect.
+          I'm looking for a Vue or React role with a team in the Philippines or abroad.
+          If you're hiring, or want to talk about a role, I'd be glad to hear from you.
         </p>
       </div>
 
-      <!-- Action Button -->
-      <div class="pt-2">
+      <!-- Email (visible, with separate copy action) -->
+      <div class="flex flex-wrap items-center gap-3 font-mono text-sm sm:text-base">
+        <a
+          :href="mailtoUrl"
+          class="text-main font-semibold hover:text-primary transition-colors break-all"
+        >
+          {{ email }}
+        </a>
         <button
           type="button"
-          @click="handleMainButtonClick"
-          class="group inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-xl hover:bg-primary/90 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+          @click="copyEmail"
+          class="inline-flex items-center gap-1.5 text-xs text-main/60 hover:text-primary border border-main/10 hover:border-primary/40 rounded-lg px-2.5 py-1.5 transition-colors cursor-pointer"
+          :aria-label="isCopied ? 'Email copied' : 'Copy email address'"
         >
-          <span>{{ isCopied ? 'Email Copied!' : 'Get In Touch' }}</span>
-          <Icon 
-            :icon="isCopied ? 'lucide:check' : 'lucide:arrow-right'" 
-            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" 
-          />
+          <Icon :icon="isCopied ? 'lucide:check' : 'lucide:copy'" class="w-3.5 h-3.5" />
+          <span>{{ isCopied ? 'Copied' : 'Copy' }}</span>
         </button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+        <a
+          :href="mailtoUrl"
+          class="group inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-xl hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-md"
+        >
+          <span>Email Me</span>
+          <Icon icon="lucide:arrow-right" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
+        <a
+          :href="CV_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 border border-main/15 text-main/80 hover:text-main hover:border-main/30 font-semibold text-sm px-6 py-3 rounded-xl transition-all duration-200"
+        >
+          <Icon icon="lucide:download" class="w-4 h-4 text-main/70" />
+          <span>Download CV</span>
+        </a>
       </div>
 
       <!-- Social Links (GitHub & LinkedIn only) -->
@@ -57,10 +82,12 @@
 <script setup>
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import { ROUTES } from '../constant/routes'
+import { ROUTES, CV_URL } from '../constant/routes'
 
-const email = ref('markgil.p.sendin@gmail.com')
+const email = 'markgil.p.sendin@gmail.com'
 const isCopied = ref(false)
+
+const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent('Frontend Developer Opportunity')}`
 
 const contactLinks = [
   { 
@@ -77,32 +104,14 @@ const contactLinks = [
 
 const copyEmail = async () => {
   try {
-    await navigator.clipboard.writeText(email.value)
+    await navigator.clipboard.writeText(email)
     isCopied.value = true
     setTimeout(() => {
       isCopied.value = false
     }, 2500)
   } catch (err) {
-    window.location.href = `mailto:${email.value}`
+    // Clipboard not available (e.g. non-secure context): fall back to the mail client
+    window.location.href = mailtoUrl
   }
-}
-
-const handleMainButtonClick = () => {
-  copyEmail()
-  
-  const subject = encodeURIComponent('Frontend Development Inquiry')
-  const body = encodeURIComponent(
-    'Hi Mark,\n\n' +
-    'I came across your portfolio and would like to get in touch about a project or opportunity.\n\n' +
-    'Here are a few details:\n' +
-    'Project / Opportunity:\n' +
-    'Message:\n\n' +
-    'Best,\n' +
-    '[Your Name]'
-  )
-  
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email.value)}&su=${subject}&body=${body}`
-  
-  window.open(gmailUrl, '_blank', 'noopener,noreferrer')
 }
 </script>

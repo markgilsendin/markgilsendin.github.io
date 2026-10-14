@@ -9,7 +9,7 @@ const router = createRouter({
       path: ROUTES.HOME.path, 
       name: ROUTES.HOME.name, 
       component: Home,
-      meta: { title: 'Mark Gil Sendin | Portfolio' }
+      meta: { title: 'Mark Gil Sendin | Frontend Developer (Vue & React)' }
     },
     { 
       path: ROUTES.ALL_PROJECTS.path, 
@@ -40,7 +40,7 @@ const router = createRouter({
 
 // Update document title dynamically after every route change
 router.afterEach((to) => {
-  document.title = to.meta.title || 'Mark Gil Sendin | Portfolio'
+  document.title = to.meta.title || 'Mark Gil Sendin | Frontend Developer (Vue & React)'
 })
 
 export default router

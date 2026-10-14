@@ -14,3 +14,6 @@ export const ROUTES = {
     CONTACT: { id: 'contact', path: '/', hash: '#contact' },
   }
 }
+
+// Public CV file (served from /public)
+export const CV_URL = '/mark-gil-sendin-cv.pdf'

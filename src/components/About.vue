@@ -13,19 +13,38 @@
       <!-- Main Heading -->
       <div class="max-w-3xl">
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
-          A frontend developer focused on building practical web applications.
+          From IT graduate to building the frontend of university systems.
         </h2>
       </div>
 
-      <!-- Description -->
-      <p class="text-sm md:text-lg text-main/70 font-normal">
-        I work primarily on the frontend of web applications, turning designs into functional interfaces and connecting them with backend services. 
-        My experience includes institutional systems, dashboards, workflow-based applications, and business websites.
-      </p>
+      <!-- Story -->
+      <div class="max-w-3xl space-y-4 text-sm md:text-lg text-main/70 font-normal leading-relaxed">
+        <p>
+          I'm an IT graduate who joined Bulacan State University in an administrative role. Most of my work there was
+          already coding, so moving fully into development was the natural step: first as a Computer Programmer working
+          on the university website, and now as a frontend developer on its internal systems.
+        </p>
+        <p>
+          Day to day, I build user interfaces from Figma designs, break them into reusable components, connect them to
+          REST APIs, and manage application state so each user role sees the right screens and data. I work closely
+          with UI/UX designers and backend developers, mostly in Vue 3 and React with TypeScript and Tailwind CSS.
+        </p>
+      </div>
+
+      <!-- What I'm looking for -->
+      <div class="max-w-3xl rounded-xl border border-primary/20 bg-primary/5 p-5 sm:p-6 space-y-2">
+        <p class="font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold text-primary">
+          What I'm looking for
+        </p>
+        <p class="text-sm md:text-base text-main/80 leading-relaxed">
+          A remote frontend role on a Vue or React team, in the Philippines or abroad. I want to keep growing by owning
+          features end to end and writing well-structured TypeScript.
+        </p>
+      </div>
 
       <div class="pt-8 space-y-2">
         <h3 class="text-xl sm:text-2xl font-bold text-main tracking-tight">
-          What I can help build
+          What I do as a frontend developer
         </h3>
       </div>
 
@@ -73,41 +92,41 @@
 </template>
 
 <script setup>
-import { Monitor, Network, Cpu, Wrench } from 'lucide-vue-next'
+import { Monitor, Component as ComponentIcon, Network, ListChecks } from 'lucide-vue-next'
 import { ROUTES } from '../constant/routes'
 
 const features = [
   {
-    id: 'ui-design',
+    id: 'ui-development',
     code: '01',
     category: 'UI Development',
-    title: 'Responsive Interfaces',
-    description: 'Translating designs into clean, responsive interfaces across desktop and mobile.',
+    title: 'Design to Responsive UI',
+    description: 'Turning Figma designs into responsive layouts that work on desktop and mobile.',
     icon: Monitor
   },
   {
-    id: 'data-flow',
+    id: 'components',
     code: '02',
-    category: 'API INTEGRATION',
-    title: 'REST API Integration',
-    description: 'Connecting frontend applications to backend services and handling application data and states.',
+    category: 'Components',
+    title: 'Reusable, Role-Based Views',
+    description: 'Building reusable components in Vue and React, with views that change based on each user\'s role.',
+    icon: ComponentIcon
+  },
+  {
+    id: 'api-integration',
+    code: '03',
+    category: 'API Integration',
+    title: 'Data & UI States',
+    description: 'Connecting to REST APIs with Axios and handling loading and error states so screens stay clear.',
     icon: Network
   },
   {
-    id: 'architecture',
-    code: '03',
-    category: 'APPLICATION DEVELOPMENT',
-    title: 'Web Applications',
-    description: 'Building dashboards, management systems, forms, and workflow-based applications.',
-    icon: Cpu
-  },
-  {
-    id: 'maintenance',
+    id: 'forms-state',
     code: '04',
-    category: 'MAINTENANCE',
-    title: 'System Improvements',
-    description: 'Troubleshooting issues, fixing bugs, and improving existing applications.',
-    icon: Wrench
+    category: 'Forms & State',
+    title: 'Validation & App State',
+    description: 'Building forms with validation and managing application state with tools like Vuex and Zustand.',
+    icon: ListChecks
   }
 ]
 </script>

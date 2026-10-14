@@ -19,6 +19,12 @@
         Selected institutional applications and frontend work I've contributed to throughout my development experience.
       </p>
 
+      <!-- Private code note -->
+      <p class="inline-flex items-start gap-2 font-mono text-xs text-main/50">
+        <Lock class="w-3.5 h-3.5 mt-0.5 shrink-0" />
+        <span>Most of these are internal university systems, so the code is private. Screenshots or a walkthrough are available on request.</span>
+      </p>
+
       <!-- 2 Cards Per Row Grid -->
       <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
         <article
@@ -95,7 +101,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { ArrowRight, Folder } from 'lucide-vue-next'
+import { ArrowRight, Folder, Lock } from 'lucide-vue-next'
 import { projects } from '@/data/projects'
 import { ROUTES } from '@/constant/routes'
 import StatusBadge from '@/components/global/StatusBadge.vue'

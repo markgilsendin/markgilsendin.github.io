@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto px-10 py-8 sm:px-16 lg:px-24 text-center space-y-2">
     
     <p class="font-mono md:text-sm text-xs text-main/50">
-      This portfolio is continuously evolving.
+      Built with Vue 3, Vite &amp; Tailwind CSS.
     </p>
 
     <p class="font-mono md:text-sm text-xs text-main/40">
