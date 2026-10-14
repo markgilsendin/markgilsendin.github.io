@@ -17,9 +17,9 @@
             <span class="block text-4xl sm:text-5xl xl:text-6xl font-black text-main tracking-tight leading-[1.1]">
               Hi, I'm Mark Gil.
             </span>
-            <span class="block text-xl sm:text-2xl xl:text-3xl font-semibold text-main/70 tracking-tight leading-snug max-w-xl">
+            <span class="block text-xl sm:text-2xl xl:text-3xl font-semibold text-main/70 tracking-tight leading-snug max-w-xl text-balance">
               I build responsive web interfaces with
-              <span class="text-primary">Vue and React</span>.
+              <span class="whitespace-nowrap"><span class="text-primary">Vue and React</span>.</span>
             </span>
           </h1>
 

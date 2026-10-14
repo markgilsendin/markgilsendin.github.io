@@ -10,14 +10,21 @@
         05 &mdash; CONTACT
       </p>
 
+      <!-- Text + Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+      <!-- Left Column: Heading, email, actions -->
+      <div class="lg:col-span-7 space-y-8">
+
       <!-- Main Heading & Description Container -->
       <div class="max-w-2xl space-y-4">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-main tracking-tight leading-tight">
-          Open to remote frontend roles.
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-main tracking-tight leading-tight text-balance">
+          Open to remote roles and freelance projects.
         </h2>
         <p class="text-sm md:text-lg text-main/70 font-normal leading-relaxed">
-          I'm looking for a Vue or React role with a team in the Philippines or abroad.
-          If you're hiring, or want to talk about a role, I'd be glad to hear from you.
+          I'm looking for a Vue or React role with a team in the Philippines or abroad, and I'm also open to
+          freelance frontend and website projects. If you're hiring or have a project in mind, I'd be glad to
+          hear from you.
         </p>
       </div>
 
@@ -75,6 +82,37 @@
         </a>
       </div>
 
+      </div>
+
+      <!-- Right Column: Working with me -->
+      <aside class="lg:col-span-5 w-full bg-canvas/60 border border-main/10 rounded-2xl p-6 sm:p-8 space-y-5 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]">
+        <p class="font-mono text-xs uppercase tracking-wider font-bold text-primary">
+          Working with me
+        </p>
+
+        <dl class="space-y-4">
+          <div
+            v-for="item in workingDetails"
+            :key="item.label"
+            class="flex items-start gap-3.5"
+          >
+            <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <Icon :icon="item.icon" class="w-4 h-4" />
+            </span>
+            <div class="min-w-0">
+              <dt class="font-mono text-[11px] uppercase tracking-wider text-main/50">
+                {{ item.label }}
+              </dt>
+              <dd class="text-sm md:text-base font-semibold text-main/90">
+                {{ item.value }}
+              </dd>
+            </div>
+          </div>
+        </dl>
+      </aside>
+
+      </div>
+
     </div>
   </section>
 </template>
@@ -87,7 +125,15 @@ import { ROUTES, CV_URL } from '../constant/routes'
 const email = 'markgil.p.sendin@gmail.com'
 const isCopied = ref(false)
 
-const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent('Frontend Developer Opportunity')}`
+const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent('Frontend Role / Project Inquiry')}`
+
+// Practical details for recruiters and clients. Only list what is true.
+const workingDetails = [
+  { label: 'Time zone', value: 'Philippines (UTC+8)', icon: 'lucide:clock' },
+  { label: 'Open to', value: 'Full-time remote roles and freelance projects', icon: 'lucide:briefcase' },
+  { label: 'Work setup', value: 'Remote', icon: 'lucide:laptop' },
+  { label: 'Best way to reach me', value: 'Email', icon: 'lucide:mail' }
+]
 
 const contactLinks = [
   { 

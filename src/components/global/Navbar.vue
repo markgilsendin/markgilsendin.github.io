@@ -7,8 +7,10 @@
         <div class="relative">
           <div class="w-12 h-12 bg-white rounded-full overflow-hidden border-2 border-primary/80 group-hover:border-primary transition-all duration-300 group-hover:shadow-primary/20">
             <img 
-              src="/profile.png" 
-              alt="Mark Gil Sendin" 
+              src="/avatar.jpg"
+              alt="Mark Gil Sendin"
+              width="48"
+              height="48"
               class="w-full h-full object-cover object-center"
             />
           </div>

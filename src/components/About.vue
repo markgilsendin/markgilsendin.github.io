@@ -10,6 +10,12 @@
         01 &mdash; ABOUT
       </p>
 
+      <!-- Text + Photo -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+      <!-- Left Column: Text -->
+      <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+
       <!-- Main Heading -->
       <div class="max-w-3xl">
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
@@ -37,9 +43,33 @@
           What I'm looking for
         </p>
         <p class="text-sm md:text-base text-main/80 leading-relaxed">
-          A remote frontend role on a Vue or React team, in the Philippines or abroad. I want to keep growing by owning
-          features end to end and writing well-structured TypeScript.
+          A remote frontend role on a Vue or React team, in the Philippines or abroad. I'm also open to freelance
+          frontend and website projects. I want to keep growing by owning features end to end and writing
+          well-structured TypeScript.
         </p>
+      </div>
+
+      </div>
+
+      <!-- Right Column: Photo -->
+      <figure class="lg:col-span-5 w-full max-w-xs sm:max-w-sm mx-auto lg:max-w-none lg:mt-2">
+        <div class="relative">
+          <!-- Offset accent frame -->
+          <div
+            class="absolute inset-0 translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 rounded-2xl border-2 border-primary/30"
+            aria-hidden="true"
+          ></div>
+          <img
+            src="/about-photo.png"
+            alt="Mark Gil Sendin"
+            width="800"
+            height="1000"
+            loading="lazy"
+            class="relative w-full h-auto aspect-[4/5] object-cover rounded-2xl border border-main/10 bg-white shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]"
+          />
+        </div>
+      </figure>
+
       </div>
 
       <div class="pt-8 space-y-2">
