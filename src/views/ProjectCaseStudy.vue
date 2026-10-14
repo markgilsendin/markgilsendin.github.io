@@ -1,8 +1,8 @@
 <template>
   <div v-if="project" class="w-full max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-12 sm:py-20 space-y-12">
-    
+
     <!-- Navigation Back Link -->
-    <router-link 
+    <router-link
       :to="{ path: ROUTES.SECTIONS.PROJECTS.path, hash: ROUTES.SECTIONS.PROJECTS.hash }"
       class="inline-flex items-center gap-2 text-base font-mono text-main/60 hover:text-main transition-colors"
     >
@@ -17,6 +17,7 @@
           <Tag class="w-4 h-4 shrink-0" />
           {{ project.caseStudy.type }}
         </span>
+        <StatusBadge :status="project.status" />
       </div>
 
       <h1 class="text-3xl sm:text-4xl font-extrabold text-main tracking-tight leading-tight">
@@ -29,8 +30,8 @@
 
       <!-- Tech Stack Badges -->
       <div class="flex flex-wrap gap-2 pt-2">
-        <span 
-          v-for="tag in project.tags" 
+        <span
+          v-for="tag in project.tags"
           :key="tag"
           class="font-mono text-xs text-main/80 bg-main/5 border border-main/10 px-3.5 py-1.5 rounded-lg"
         >
@@ -41,7 +42,7 @@
 
     <!-- Layout Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      
+
       <!-- Left Sidebar: Project Snapshot -->
       <aside class="lg:col-span-4 bg-canvas-alt border border-main/10 rounded-2xl p-6 sm:p-8 space-y-6 lg:sticky top-24">
         <div class="flex items-center gap-2 border-b border-main/10 pb-3">
@@ -58,6 +59,14 @@
               My Role
             </span>
             <span class="font-bold text-main pt-0.5 block">{{ project.caseStudy.role }}</span>
+          </div>
+
+          <div v-if="project.status" class="border-b border-main/10 pb-3 space-y-1.5">
+            <span class="text-main/50 flex items-center gap-1.5 text-xs uppercase">
+              <CheckCircle2 class="w-4 h-4 shrink-0" />
+              Status
+            </span>
+            <span class="font-bold text-main pt-0.5 block">{{ project.status }}</span>
           </div>
 
           <div class="border-b border-main/10 pb-3 space-y-1.5">
@@ -98,7 +107,7 @@
 
       <!-- Right Column: Case Study Narrative -->
       <main class="lg:col-span-8 space-y-12">
-        
+
         <!-- Overview & The Challenge -->
         <section class="space-y-4">
           <div class="flex items-center gap-2">
@@ -129,8 +138,8 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div 
-              v-for="(item, idx) in project.caseStudy.myContribution" 
+            <div
+              v-for="(item, idx) in project.caseStudy.myContribution"
               :key="item"
               class="p-4 bg-canvas border border-main/10 rounded-xl space-y-2 flex flex-col justify-between"
             >
@@ -150,8 +159,8 @@
 
           <!-- Cards / List Grid Layout -->
           <div class="grid grid-cols-1 gap-4">
-            <div 
-              v-for="(challenge, idx) in project.caseStudy.technicalChallenges" 
+            <div
+              v-for="(challenge, idx) in project.caseStudy.technicalChallenges"
               :key="challenge.title || idx"
               class="p-5 sm:p-6 bg-canvas-alt border border-main/10 rounded-xl space-y-2 hover:border-main/20 transition-colors"
             >
@@ -219,25 +228,26 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { projects } from '@/data/projects'
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Lock, 
-  UserCircle, 
-  Folder, 
-  Globe, 
-  Code2, 
-  Layers, 
-  Tag, 
-  BookOpen, 
-  Target, 
-  CheckCircle2, 
-  Cpu, 
-  Lightbulb, 
-  Sparkles, 
-  Award 
+import {
+  ArrowLeft,
+  ExternalLink,
+  Lock,
+  UserCircle,
+  Folder,
+  Globe,
+  Code2,
+  Layers,
+  Tag,
+  BookOpen,
+  Target,
+  CheckCircle2,
+  Cpu,
+  Lightbulb,
+  Sparkles,
+  Award
 } from 'lucide-vue-next'
 import { ROUTES } from '@/constant/routes'
+import StatusBadge from '@/components/global/StatusBadge.vue'
 
 const route = useRoute()
 const project = computed(() => projects.find(p => p.id === route.params.id))

@@ -1,9 +1,9 @@
 <template>
   <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 sm:py-20 space-y-10">
-    
+
     <!-- Page Header -->
     <div class="space-y-4 max-w-3xl">
-      <router-link 
+      <router-link
         :to=ROUTES.HOME
         class="inline-flex items-center gap-2 text-sm font-mono text-main/60 hover:text-main transition-colors"
       >
@@ -19,25 +19,25 @@
 
     <!-- Category Filter Tags -->
     <div class="flex flex-wrap items-center gap-2 border-b border-main/10 pb-6">
-      <button 
+      <button
         @click="selectedTag = 'All'"
         :class="[
           'font-mono text-xs px-4 py-2 rounded-full border transition-all cursor-pointer',
-          selectedTag === 'All' 
-            ? 'bg-primary text-white border-primary' 
+          selectedTag === 'All'
+            ? 'bg-primary text-white border-primary'
             : 'bg-main/5 text-main/70 border-main/10 hover:border-main/30'
         ]"
       >
         All ({{ projects.length }})
       </button>
-      <button 
-        v-for="tag in availableTags" 
+      <button
+        v-for="tag in availableTags"
         :key="tag"
         @click="selectedTag = tag"
         :class="[
           'font-mono text-xs px-4 py-2 rounded-full border transition-all cursor-pointer',
-          selectedTag === tag 
-            ? 'bg-primary text-white border-primary' 
+          selectedTag === tag
+            ? 'bg-primary text-white border-primary'
             : 'bg-main/5 text-main/70 border-main/10 hover:border-main/30'
         ]"
       >
@@ -47,8 +47,8 @@
 
     <!-- Projects Grid -->
     <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
-        <article 
-          v-for="(project, index) in filteredProjects" 
+        <article
+          v-for="(project, index) in filteredProjects"
           :key="project.id"
           class="group relative bg-canvas-alt/50 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300"
         >
@@ -66,6 +66,7 @@
 
             <!-- Title & Description -->
             <div class="space-y-2">
+              <StatusBadge :status="project.status" />
               <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight">
                 {{ project.title }}
               </h3>
@@ -76,8 +77,8 @@
 
             <!-- Tech Badges -->
             <div class="flex flex-wrap gap-1.5 pt-2">
-              <span 
-                v-for="tech in project.tags" 
+              <span
+                v-for="tech in project.tags"
                 :key="tech"
                 class="font-mono text-xs text-main/80 bg-main/5 border border-main/10 px-2.5 py-1 rounded"
               >
@@ -88,7 +89,7 @@
 
           <!-- Card Footer -->
           <div class="pt-4 border-t border-main/5 flex items-center justify-between gap-10 font-mono text-xs sm:text-sm">
-            <router-link 
+            <router-link
               :to=ROUTES.CASE_STUDY(project.id)
               class="inline-flex items-center gap-2 text-primary transition-colors group/link whitespace-nowrap"
             >
@@ -111,6 +112,7 @@ import { ref, computed } from 'vue'
 import { projects } from '@/data/projects'
 import { ArrowRight, Folder } from 'lucide-vue-next'
 import { ROUTES } from '@/constant/routes'
+import StatusBadge from '@/components/global/StatusBadge.vue'
 
 const selectedTag = ref('All')
 
