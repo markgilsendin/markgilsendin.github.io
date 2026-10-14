@@ -60,7 +60,7 @@
             aria-hidden="true"
           ></div>
           <img
-            src="/about-photo.png"
+            src="/about-photo.jpg"
             alt="Mark Gil Sendin"
             width="800"
             height="1000"

@@ -19,7 +19,7 @@
       <!-- Main Heading & Description Container -->
       <div class="max-w-2xl space-y-4">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-main tracking-tight leading-tight text-balance">
-          Open to remote roles and freelance projects.
+          Let's work together.
         </h2>
         <p class="text-sm md:text-lg text-main/70 font-normal leading-relaxed">
           I'm looking for a Vue or React role with a team in the Philippines or abroad, and I'm also open to
@@ -131,8 +131,7 @@ const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent('Frontend Role /
 const workingDetails = [
   { label: 'Time zone', value: 'Philippines (UTC+8)', icon: 'lucide:clock' },
   { label: 'Open to', value: 'Full-time remote roles and freelance projects', icon: 'lucide:briefcase' },
-  { label: 'Work setup', value: 'Remote', icon: 'lucide:laptop' },
-  { label: 'Best way to reach me', value: 'Email', icon: 'lucide:mail' }
+  { label: 'Hours', value: 'Flexible for overlap with US, EU or AU teams', icon: 'lucide:handshake' }
 ]
 
 const contactLinks = [
