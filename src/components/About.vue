@@ -13,21 +13,21 @@
       <!-- Main Heading -->
       <div class="max-w-3xl">
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-main tracking-tight">
-          From IT graduate to building the frontend of university systems.
+          A frontend developer who turns designs into clean, working interfaces.
         </h2>
       </div>
 
-      <!-- Story -->
+      <!-- Intro -->
       <div class="max-w-3xl space-y-4 text-sm md:text-lg text-main/70 font-normal leading-relaxed">
-        <p>
-          I'm an IT graduate who joined Bulacan State University in an administrative role. Most of my work there was
-          already coding, so moving fully into development was the natural step: first as a Computer Programmer working
-          on the university website, and now as a frontend developer on its internal systems.
-        </p>
         <p>
           Day to day, I build user interfaces from Figma designs, break them into reusable components, connect them to
           REST APIs, and manage application state so each user role sees the right screens and data. I work closely
           with UI/UX designers and backend developers, mostly in Vue 3 and React with TypeScript and Tailwind CSS.
+        </p>
+        <p>
+          I pay attention to the details that make an interface easy to use: consistent layouts, clear feedback while
+          data is loading or when something goes wrong, and forms with clear validation messages. I also try to keep my
+          code organized and readable, so the next developer can pick it up without guesswork.
         </p>
       </div>
 

@@ -20,12 +20,12 @@
       </p>
 
       <!-- Timeline Container -->
-      <div class="mt-12 sm:mt-16 relative pl-6 sm:pl-8 lg:pl-10 space-y-8 sm:space-y-12">
+      <div class="mt-12 sm:mt-16 relative pl-6 sm:pl-8 lg:pl-10 space-y-8 sm:space-y-10">
 
         <!-- Timeline Vertical Stem Line -->
         <div class="absolute left-2.5 sm:left-3.5 top-3 bottom-3 w-px bg-main/10"></div>
 
-        <!-- Experience Item -->
+        <!-- Main Experience Items -->
         <article
           v-for="exp in experiences"
           :key="exp.id"
@@ -42,16 +42,14 @@
           </div>
 
           <!-- Experience Content Card -->
-          <div class="bg-canvas/40 border border-main/10 rounded-xl p-6 sm:p-8 space-y-6 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]">
+          <div class="bg-canvas/40 border border-main/10 rounded-xl p-6 sm:p-8 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
               <!-- Role & Company Info (Left Column) -->
               <div class="lg:col-span-5 space-y-3">
-                <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
-                  <span class="px-2.5 py-1 rounded bg-main/5 border border-main/10 font-bold text-primary uppercase tracking-wider">
-                    {{ exp.period }}
-                  </span>
-                </div>
+                <span class="inline-block font-mono text-xs px-2.5 py-1 rounded bg-main/5 border border-main/10 font-bold text-primary uppercase tracking-wider">
+                  {{ exp.period }}
+                </span>
 
                 <div class="space-y-1">
                   <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight leading-snug">
@@ -68,27 +66,57 @@
                 </p>
               </div>
 
-              <!-- Selected Responsibilities (Right Column) -->
-              <div class="lg:col-span-7 space-y-4 lg:border-l lg:border-main/10 lg:pl-8 pt-4 lg:pt-0 border-t border-main/10 lg:border-t-0">
-                <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-main/50 font-bold">
-                  <CheckCircle2 class="w-4 h-4 text-primary shrink-0" />
-                  <span>Highlights</span>
-                </div>
+              <!-- Highlights (Right Column) -->
+              <div class="lg:col-span-7 space-y-3 lg:border-l lg:border-main/10 lg:pl-8 pt-4 lg:pt-0 border-t border-main/10 lg:border-t-0">
+                <p class="font-mono text-xs uppercase tracking-wider text-main/50 font-bold">
+                  Highlights
+                </p>
 
-                <!-- Responsive Grid: 1 col on mobile, 2 cols on tablet/desktop -->
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <ul class="space-y-2.5">
                   <li
-                    v-for="(task, idx) in exp.responsibilities"
+                    v-for="(item, idx) in exp.highlights"
                     :key="idx"
-                    class="flex items-start gap-2.5 p-3 rounded-lg bg-canvas/60 border border-main/10 text-xs sm:text-sm text-main/80"
+                    class="flex items-start gap-2.5 text-xs sm:text-sm text-main/80 leading-relaxed"
                   >
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
-                    <span class="leading-relaxed">{{ task }}</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span>
+                    <span>{{ item }}</span>
                   </li>
                 </ul>
               </div>
 
             </div>
+          </div>
+        </article>
+
+        <!-- Earlier Roles (compact) -->
+        <article class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] lg:-left-[47px] top-6 flex items-center justify-center">
+            <span class="w-3 h-3 rounded-full border-2 bg-canvas-alt border-main/30"></span>
+          </div>
+
+          <div class="border border-dashed border-main/15 rounded-xl p-6 sm:p-8 space-y-4">
+            <p class="font-mono text-xs uppercase tracking-wider text-main/50 font-bold">
+              Earlier roles
+            </p>
+
+            <ul class="divide-y divide-main/10">
+              <li
+                v-for="role in earlierRoles"
+                :key="role.id"
+                class="py-3 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6"
+              >
+                <div class="min-w-0">
+                  <p class="text-sm font-semibold text-main">
+                    {{ role.role }}
+                    <span class="font-normal text-main/60">&middot; {{ role.company }}</span>
+                  </p>
+                  <p class="text-xs text-main/60 leading-relaxed">{{ role.note }}</p>
+                </div>
+                <span class="font-mono text-[11px] sm:text-xs text-main/50 uppercase tracking-wider whitespace-nowrap shrink-0">
+                  {{ role.period }}
+                </span>
+              </li>
+            </ul>
           </div>
         </article>
 
@@ -99,11 +127,12 @@
 </template>
 
 <script setup>
-import { Building2, CheckCircle2 } from 'lucide-vue-next'
+import { Building2 } from 'lucide-vue-next'
 import { ROUTES } from '../constant/routes'
 
-// Listed newest first. Bulacan State University roles are shown as separate entries so the
+// Main roles, newest first. Bulacan State University roles are separate entries so the
 // progression (Clerk -> Computer Programmer I -> Project Development Officer II) is visible.
+// Keep highlights to about five: project details live in the Projects section.
 const experiences = [
   {
     id: 'bulsu-pdo2',
@@ -112,15 +141,12 @@ const experiences = [
     period: '02/2023 — PRESENT',
     isCurrent: true,
     summary: 'Frontend development for university web systems used by students, faculty, and staff. I work with Vue 3, React, TypeScript, and Tailwind CSS, and integrate REST APIs from the backend team.',
-    responsibilities: [
+    highlights: [
       'Built the frontend for four university systems with Vue 3, Vuex, React, TypeScript, and Zustand (two live, two in training)',
+      'Translated Figma designs from the UI/UX team into responsive, role-based interfaces, integrating REST APIs with Axios and handling loading, error, and form-validation states',
       'Developed an attendance app that runs inside an Android WebView, with Firebase notifications sent to parents',
-      'Translated Figma designs from the UI/UX team into responsive, role-based interfaces',
-      'Integrated REST APIs with Axios, handling loading, error, and form-validation states',
-      'Took over an unfinished vanilla JavaScript certificate and report generation tool and brought it to production',
-      'Set up the project structure for a React and TypeScript service request system and reviewed code written by an intern developer',
-      'Contributing to the School Management System (in development) as one of three frontend developers, using Next.js, TypeScript, Zod, TanStack Query and Husky git hooks',
-      'Guide student assistants assigned to me on frontend tasks'
+      'Contributing to the School Management System (in development) as one of three frontend developers, using Next.js, TypeScript, Zod, TanStack Query, and Husky git hooks',
+      'Set up the project structure for a React and TypeScript service request system, reviewed code written by an intern developer, and guide student assistants on frontend tasks'
     ]
   },
   {
@@ -130,7 +156,7 @@ const experiences = [
     period: '2024',
     isCurrent: false,
     summary: 'Freelance project to design and build a corporate website, handled from design through deployment.',
-    responsibilities: [
+    highlights: [
       'Designed the website layout in Figma',
       'Built the site in WordPress and Elementor with responsive desktop and mobile layouts',
       'Handled testing, hosting configuration, and deployment on Hostinger'
@@ -143,45 +169,35 @@ const experiences = [
     period: '01/2021 — 01/2023',
     isCurrent: false,
     summary: 'Supported website and form work at the university, mainly with WordPress.',
-    responsibilities: [
+    highlights: [
       'Updated website content and layouts in WordPress',
       'Supported layout styling and data-binding for user-facing forms'
     ]
-  },
+  }
+]
+
+// Shorter, older or non-development roles, shown as one compact list.
+const earlierRoles = [
   {
     id: 'bulsu-clerk',
     role: 'Clerk',
     company: 'Bulacan State University',
     period: '06/2019 — 01/2021',
-    isCurrent: false,
-    summary: 'Administrative support for the Planning and Development Office.',
-    responsibilities: [
-      'Prepared and submitted internal documents and reports'
-    ]
+    note: 'Administrative support for the Planning and Development Office.'
   },
   {
     id: 'setup-phils',
     role: 'Junior Web Developer',
     company: 'Setup Phils Inc.',
     period: '01/2018 — 04/2018',
-    isCurrent: false,
-    summary: 'Built and updated client websites on a content management system.',
-    responsibilities: [
-      'Assisted in building responsive client website layouts',
-      'Updated banners, forms, and dynamic sections based on client requirements'
-    ]
+    note: 'Built and updated client websites on a content management system.'
   },
   {
     id: 'innov8tive',
     role: 'Junior Game Developer',
     company: 'Innov8tive Design & Development',
     period: '09/2014 — 06/2015',
-    isCurrent: false,
-    summary: 'Assisted with UI work on game projects, including testing and debugging.',
-    responsibilities: [
-      'Updated game UI layouts, sprites, and interface assets based on client feedback',
-      'Took part in testing and debugging interface issues'
-    ]
+    note: 'Updated game UI layouts and interface assets, and helped with testing and debugging.'
   }
 ]
 </script>

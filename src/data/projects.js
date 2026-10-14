@@ -1,5 +1,10 @@
 // `status` is one of: 'Live', 'In end-user training', 'In training', 'In user testing', 'In development'.
 // Projects are ordered so the first four (shown on the home page) are the strongest and most verifiable.
+//
+// Optional screenshot: put the image in public/projects/ and add an `image` field to the project, e.g.
+//   image: { src: '/projects/attendance-monitoring-system.png', alt: 'Attendance dashboard showing today\'s time-in records' },
+// It then shows on the home page card, the All Projects page and the case study page.
+// Use 16:9 images (e.g. 1600 x 900). Blur or replace real names, student data and logos first.
 export const projects = [
   {
     id: 'attendance-monitoring-system',

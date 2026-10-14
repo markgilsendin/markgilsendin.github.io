@@ -32,6 +32,18 @@
           :key="project.id"
           class="group relative bg-canvas-alt/70 rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:border-main/20 transition-all duration-300"
         >
+          <!-- Optional screenshot (set `image` in src/data/projects.js) -->
+          <div
+            v-if="project.image"
+            class="-mx-6 -mt-6 sm:-mx-8 sm:-mt-8 aspect-video overflow-hidden rounded-t-xl border-b border-main/10 bg-main/5"
+          >
+            <img
+              :src="project.image.src"
+              :alt="project.image.alt"
+              loading="lazy"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+          </div>
           <div class="space-y-4">
             <!-- Top Metadata -->
             <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 font-mono text-xs">

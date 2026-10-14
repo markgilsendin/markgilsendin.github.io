@@ -40,6 +40,18 @@
       </div>
     </header>
 
+    <!-- Optional screenshot (set `image` in src/data/projects.js) -->
+    <figure
+      v-if="project.image"
+      class="overflow-hidden rounded-2xl border border-main/10 bg-main/5 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]"
+    >
+      <img
+        :src="project.image.src"
+        :alt="project.image.alt"
+        class="w-full h-auto"
+      />
+    </figure>
+
     <!-- Layout Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 

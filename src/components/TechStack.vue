@@ -23,48 +23,46 @@
         </div>
       </div>
 
-      <!-- Category Groups Loop -->
-      <div class="space-y-10">
+      <!-- Category Panels -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         <div
           v-for="category in techCategories"
           :key="category.title"
-          class="space-y-6"
+          class="bg-canvas/40 border border-main/10 rounded-xl p-5 sm:p-6 space-y-4 shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)]"
         >
-          <!-- Category Subheading -->
-          <h3 class="text-lg sm:text-xl font-bold text-main tracking-tight pb-3">
+          <!-- Category Title -->
+          <h3 class="font-mono text-xs uppercase tracking-wider font-bold text-primary">
             {{ category.title }}
           </h3>
 
-          <!-- Grid Layout (Matching Feature Cards Grid) -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <div
+          <!-- Tool Rows -->
+          <ul class="space-y-3">
+            <li
               v-for="tool in category.tools"
               :key="tool.name"
-              class="bg-canvas/40 group flex flex-col items-center justify-center border border-main/10 p-5 rounded-xl shadow-[0_10px_20px_10px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-200 cursor-default"
+              class="flex items-center gap-3"
             >
-              <!-- Iconify Logo -->
-              <Icon
-                :icon="tool.icon"
-                class="w-9 h-9 mb-3 group-hover:scale-110 transition-transform duration-200 shrink-0"
-                :class="tool.iconClass"
-              />
-
-              <!-- Name & "Used on" Container -->
-              <div class="flex flex-col items-center gap-0.5 text-center">
-                <span class="text-xs sm:text-sm font-semibold text-main/80 group-hover:text-main">
+              <span class="w-9 h-9 rounded-lg bg-main/5 border border-main/10 flex items-center justify-center shrink-0">
+                <Icon
+                  :icon="tool.icon"
+                  class="w-5 h-5"
+                  :class="tool.iconClass"
+                />
+              </span>
+              <div class="min-w-0 leading-tight">
+                <p class="text-sm font-semibold text-main/90">
                   {{ tool.name }}
-                </span>
-                <span
+                </p>
+                <p
                   v-if="tool.usedOn"
-                  class="font-mono text-[11px] text-main/50 leading-snug"
+                  class="font-mono text-[11px] text-main/50 truncate"
+                  :title="tool.usedOn"
                 >
                   {{ tool.usedOn }}
-                </span>
+                </p>
               </div>
-
-            </div>
-          </div>
-
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -84,16 +82,8 @@ import { ROUTES } from '../constant/routes'
 
 // "usedOn" is optional. Only add it where the project is named in the CV,
 // so every tag can be backed up in an interview.
+// Panels are ordered so each row of three has a similar height on desktop.
 const techCategories = [
-  {
-    title: 'Languages',
-    tools: [
-      { name: 'JavaScript (ES6+)', icon: 'logos:javascript' },
-      { name: 'TypeScript', icon: 'logos:typescript-icon' },
-      { name: 'HTML', icon: 'logos:html-5' },
-      { name: 'CSS', icon: 'logos:css-3' },
-    ]
-  },
   {
     title: 'Frameworks',
     tools: [
@@ -114,13 +104,6 @@ const techCategories = [
     ]
   },
   {
-    title: 'Forms & Validation',
-    tools: [
-      { name: 'Zod', icon: 'logos:zod' },
-      { name: 'Vuelidate', icon: 'lucide:list-checks', iconClass: 'text-emerald-500' },
-    ]
-  },
-  {
     title: 'Tooling',
     tools: [
       { name: 'Git', icon: 'logos:git-icon' },
@@ -129,6 +112,22 @@ const techCategories = [
       { name: 'Husky', icon: 'lucide:dog', iconClass: 'text-main/70' },
       { name: 'Postman', icon: 'logos:postman-icon' },
       { name: 'Figma', icon: 'logos:figma' },
+    ]
+  },
+  {
+    title: 'Languages',
+    tools: [
+      { name: 'JavaScript (ES6+)', icon: 'logos:javascript' },
+      { name: 'TypeScript', icon: 'logos:typescript-icon' },
+      { name: 'HTML', icon: 'logos:html-5' },
+      { name: 'CSS', icon: 'logos:css-3' },
+    ]
+  },
+  {
+    title: 'Forms & Validation',
+    tools: [
+      { name: 'Zod', icon: 'logos:zod' },
+      { name: 'Vuelidate', icon: 'lucide:list-checks', iconClass: 'text-emerald-500' },
     ]
   },
   {
